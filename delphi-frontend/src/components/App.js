@@ -9,10 +9,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
+        <div>
+        <div className='uk-align-left'>
+         <Earth 
+         width={600}
+         height={400}
+         />
+         </div>
         <div className='uk-align-right uk-width-1-4@m'>
-         <Earth />
         <BreakingNews />
        
+        </div>
         </div>
       </div>
     );
