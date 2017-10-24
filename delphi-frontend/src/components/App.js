@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import './css/App.css';
+import BreakingNews from './BreakingNews'
+import Earth from './Earth'
 
 class App extends Component {
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
         </header>
+        <div className='uk-align-right uk-width-1-4@m'>
+         <Earth />
+        <BreakingNews />
+       
+        </div>
       </div>
     );
   }
