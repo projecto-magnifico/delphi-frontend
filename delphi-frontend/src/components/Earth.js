@@ -21,6 +21,7 @@ class Earth extends React.Component {
         Light.castShadow = true;
         Scene.add(Light)
 
+    
 
         const Geometry = new three.SphereGeometry( 3, 32, 32 )
         const Loader = new three.TextureLoader()
@@ -32,8 +33,8 @@ class Earth extends React.Component {
 
                 //Night Earth
             color: '#8c8c8c', 
-            map: Loader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg'),
-            specularMap: Loader.load('https://static1.squarespace.com/static/58586fa5ebbd1a60e7d76d3e/t/59394abb37c58179160775fa/1496926933082/Ocean_Mask.png'),
+            map: Loader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/79000/79765/dnb_land_ocean_ice.2012.3600x1800.jpg'),
+            specularMap: Loader.load('http://blog.apoapsys.com/assets/melted-ice/melted-ice-specular-4096x2048.jpg'),
             bumpMap: Loader.load('http://read.pudn.com/downloads83/sourcecode/graph/319133/earthbump.png'),
             bumpScale: 1,
             metalness: 0.0,
@@ -48,7 +49,7 @@ class Earth extends React.Component {
 
         function GlobeLoop () {
             requestAnimationFrame(GlobeLoop)
-            Globe.rotation.y += 0.005
+            Globe.rotation.y += 0.003
             Renderer.render(Scene, Camera)
         }
         GlobeLoop()
