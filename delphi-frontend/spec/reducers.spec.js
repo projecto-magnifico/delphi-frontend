@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import reducer, { getInitialState } from '../reducers';
-import * as types from '../actions/types.js'
 import * as actions from '../actions';
-const data = [{ "article": "BBC" }, { "article": "the guardian" }, { "article": "the times" }]
+const data = [{ 'article': 'BBC' }, { 'article': 'the guardian' }, { 'article': 'the times' }];
 
 describe.only('reducer', () => {
     describe('default behaviour', () => {

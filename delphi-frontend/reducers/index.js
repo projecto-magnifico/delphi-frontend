@@ -6,7 +6,7 @@ export const getInitialState = () => ({
     data: []
 });
 
-export default (prevState = initialState, action) => {
+export default (prevState = getInitialState(), action) => {
     switch (action.type) {
     case types.FETCH_THREADS_REQUEST:
         return Object.assign({}, prevState, {
