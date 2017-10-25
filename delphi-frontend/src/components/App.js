@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import BreakingNews from './BreakingNews'
 import Earth from './Earth'
+import 'uikit/dist/css/uikit.css';
+import 'uikit/dist/js/uikit.js';
 
 class App extends Component {
   render() {
