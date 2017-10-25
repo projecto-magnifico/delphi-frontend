@@ -17,11 +17,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": " mocha --require babel-register ./spec/*",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "posttest" : "npm run lint",
+    "lint": "eslint ./",
+    "lint-fix" : "npm run lint -- --fix",
+    "pre-commit" : "npm test"
   },
   "babel": {
     "presets": [
       "env"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0"
   }
 }

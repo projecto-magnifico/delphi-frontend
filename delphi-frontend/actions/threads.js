@@ -1,9 +1,7 @@
+import * as types from './types.js';
+import axios from 'axios';
 
-import * as types from "./types.js"
-// const types = require("./types.js")
-// const API_URL = "delphi URL here ...";
-
-const API_URL = ''
+const API_URL = 'localhost:3000/api';
 
 export const fetchThreadsRequest = () => ({
     type: types.FETCH_THREADS_REQUEST
@@ -22,57 +20,30 @@ export const fetchThreadsFailure = (error) => ({
 export const fetchThreads = () => {
     return (dispatch) => {
         dispatch(fetchThreadsRequest());
-        return getThreads()
+        return axios.get(`${API_URL}/threads`)
+            //fetch threads from database
             .then(res => {
-                if (id) {
-                    dispatch(fetchThreadsSuccess(res.data))
-                } else {
-                    dispatch(fetchThreadsSuccess(res.data.threads))
-                }
-            })
-            .catch(error => {
-                dispatch(fetchArticlesFailure(error.message));
-            });
-    };
-}
 
-export const fetchThreadsById = (id) => {
-    return (dispatch) => {
-        const PATH = `/threads/${id}` 
-        dispatch(fetchThreadsRequest());
-        return getThreadsById(PATH)
-            .then(res => {
-                if (id) {
-                    dispatch(fetchThreadsSuccess(res.data))
-                } else {
-                    dispatch(fetchThreadsSuccess(res.data.threads))
-                }
+                dispatch(fetchThreadsSuccess(res.data.threads));
             })
             .catch(error => {
                 dispatch(fetchThreadsFailure(error.message));
             });
     };
-}
+};
 
+export const fetchThreadsById = (id) => {
+    return (dispatch) => {
+        dispatch(fetchThreadsRequest());
+        return axios.get(`${API_URL}/threads/${id}`)
+            .then(res => {
 
-
-// module.exports = {fetchThreads,fetchThreadSuccess,fetchThreadFailure}
-
-
-// export default (route) => {
-
-//     let searchString = `${API_URL}/threads/${route}`
-
-//     return (dispatch) => {
-//         dispatch(fetchArticleRequest());
-//         return axios.get(`${searchString}`)
-//             .then(res => {
-//                 dispatch(fetchArticleSuccess(res.data));
-//             })
-//             .catch(err => {
-//                 dispatch(fetchArticleFailure(err.message));
-//             });
-//     }
-// };
+                dispatch(fetchThreadsSuccess(res.data));
+            })
+            .catch(error => {
+                dispatch(fetchThreadsFailure(error.message));
+            });
+    };
+};
 
 
