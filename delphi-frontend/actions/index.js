@@ -17,14 +17,12 @@ export const fetchThreadsFailure = (error) => ({
     payload: error
 });
 
-export const fetchThreads = () => {
+export const fetchArticlesAndKeywordsByThreads = (count = 10) => {
     return (dispatch) => {
         dispatch(fetchThreadsRequest());
-        return axios.get(`${API_URL}/threads`)
-            //fetch threads from database
-            .then(res => {
-
-                dispatch(fetchThreadsSuccess(res.data.threads));
+        return axios.get(`${API_URL}/threads?count=${count}`)
+            .then(res => {  
+                dispatch(fetchThreadsSuccess(res.data));
             })
             .catch(error => {
                 dispatch(fetchThreadsFailure(error.message));
@@ -32,7 +30,7 @@ export const fetchThreads = () => {
     };
 };
 
-export const fetchThreadsById = (id) => {
+export const fetchArticlesAndKeywordsByThreadId = (id) => {
     return (dispatch) => {
         dispatch(fetchThreadsRequest());
         return axios.get(`${API_URL}/threads/${id}`)
@@ -45,5 +43,7 @@ export const fetchThreadsById = (id) => {
             });
     };
 };
+
+
 
 

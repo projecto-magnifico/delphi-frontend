@@ -1,11 +1,5 @@
 import * as types from '../actions/types';
 
-export const initialState = {
-    loading: false,
-    error: null,
-    data: []
-};
-
 export const getInitialState = () => ({
     loading: false,
     error: null,
