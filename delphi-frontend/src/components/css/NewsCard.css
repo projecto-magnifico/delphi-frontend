@@ -1,11 +1,11 @@
 #sourceIcon {
     height: 40px;
-    width:40px
+    width:40px;
 }
 
 #newsHeader {
-padding: 3px;
-margin: 3px;
+    padding: 3px;
+    margin: 3px;
 }
 
 #newsBody {
@@ -15,9 +15,9 @@ margin: 3px;
 
 #newsDescription {
     margin: 0px;
-    padding: 2px
+    padding: 2px;
 }
 
 #newsCard {
-    margin: 30px
+    margin: 30px;
 }

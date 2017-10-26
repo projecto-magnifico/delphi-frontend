@@ -1,0 +1,21 @@
+.threadCard {
+  display: inline-block;
+  width: 30%;
+}
+
+.threadCard h3{
+  text-align: center;
+}
+
+#threadPoints ul {
+  float: left;
+  margin-left: 17px;  
+}
+
+#threadPoints ul li{
+  list-style-type: disc;
+}
+
+#topic-btn {
+  float: right;
+}
