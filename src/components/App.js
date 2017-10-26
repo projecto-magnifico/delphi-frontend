@@ -14,8 +14,8 @@ class App extends Component {
         <div>
         <div className='uk-align-left'>
          <Earth 
-         width={700}
-         height={500}
+         width={1200}
+         height={1000}
          />
          </div>
         <div className='uk-align-right uk-width-1-4@m'>
