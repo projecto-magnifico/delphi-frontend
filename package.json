@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "d3": "^4.11.0",
-    "earthjs": "^0.7.130",
-    "particles.js": "^2.0.0",
-    "particlesjs": "^2.0.2",
+    "axios": "^0.17.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "d3": "^4.11.0",
+    "earthjs": "^0.7.130",
+    "particles.js": "^2.0.0",
+    "particlesjs": "^2.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "three": "^0.87.1",
     "topojson": "^3.0.2",
@@ -25,10 +27,10 @@
     "build": "react-scripts build",
     "test": " mocha --require babel-register ./spec/*",
     "eject": "react-scripts eject",
-    "posttest" : "npm run lint",
+    "posttest": "npm run lint",
     "lint": "eslint ./",
-    "lint-fix" : "npm run lint -- --fix",
-    "pre-commit" : "npm test"
+    "lint-fix": "npm run lint -- --fix",
+    "pre-commit": "npm test"
   },
   "babel": {
     "presets": [
