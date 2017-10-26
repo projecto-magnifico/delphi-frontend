@@ -15,7 +15,6 @@ class QueryKeywords extends React.Component {
 
 
     static propTypes = {
-        keywords : PT.arrayOf(PT.object).isRequired
     }
 }
 
