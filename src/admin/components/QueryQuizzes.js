@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
-
+import {connect} from 'react-redux';
+import {fetchQuizzesForAdmin} from '../../actions'
 
 class QueryQuizzes extends React.Component {
     render () {
@@ -13,10 +14,17 @@ class QueryQuizzes extends React.Component {
         );
     }
 
-
     static propTypes = {
+        
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchQuizzesForAdmin: (query) => {
+            dispatch(fetchQuizzesForAdmin(query));
+        }
+    }
+}
 
-export default QueryQuizzes;
+export default connect(null, mapDispatchToProps)(QueryQuizzes)

@@ -1,5 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchThreadsForAdmin} from '../../actions'
 
 
 class QueryThreads extends React.Component {
@@ -18,5 +20,11 @@ class QueryThreads extends React.Component {
     }
 }
 
-
-export default QueryThreads;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchThreadsForAdmin: (query) => {
+            dispatch(fetchThreadsForAdmin(query));
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(QueryThreads)

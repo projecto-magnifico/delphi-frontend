@@ -1,5 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchKeywordsForAdmin} from '../../actions'
 
 
 class QueryKeywords extends React.Component {
@@ -17,6 +19,12 @@ class QueryKeywords extends React.Component {
     static propTypes = {
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchKeywordsForAdmin: (query) => {
+            dispatch(fetchKeywordsForAdmin(query));
+        }
+    }
+}
 
-
-export default QueryKeywords;
+export default connect(null, mapDispatchToProps)(QueryKeywords)

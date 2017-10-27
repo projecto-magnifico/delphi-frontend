@@ -1,5 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
+import { connect} from 'react-redux';
+
 
 
 class ResultThreads extends React.Component {
@@ -13,10 +15,19 @@ class ResultThreads extends React.Component {
 
 
     static propTypes = {
-        threads: PT.arrayOf(PT.object).isRequired
-        
+        loading: PT.bool.isRequired,
+        error: PT.any,
+        threads: PT.arrayOf(PT.object).isRequired,        
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.admin.threads.loading,
+        error: state.admin.threads.error,
+        threads: state.admin.threads.data
     }
 }
 
 
-export default ResultThreads;
+export default connect(mapStateToProps)(ResultThreads)

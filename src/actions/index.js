@@ -55,6 +55,23 @@ export const fetchQuizzes = (id) => {
     };
 };
 
+export const fetchQuizzesForAdmin = (query) => {
+    return (dispatch) => {
+        dispatch(fetchRequest(targets.QUIZZES));
+        return axios.get(`${API_URL}/quizzes?${query}`)
+        .then(res => {  
+            dispatch(fetchSuccess({
+                data: res.data,
+            }, targets.QUIZZES));
+        })
+        .catch(error => {
+            dispatch(fetchFailure({
+                error: error,
+            }, targets.QUIZZES));
+        });
+    };
+};
+
 export const fetchThreadsForAdmin = (query) => {
     return (dispatch) => {
         dispatch(fetchRequest(targets.THREADS));

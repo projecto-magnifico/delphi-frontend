@@ -1,6 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
-
+import { connect} from 'react-redux';
 
 class ResultQuizzes extends React.Component {
     render () {
@@ -13,10 +13,18 @@ class ResultQuizzes extends React.Component {
 
 
     static propTypes = {
-        quizzes : PT.arrayOf(PT.object).isRequired
-        
+        loading: PT.bool.isRequired,
+        error: PT.any,
+        quizzes: PT.arrayOf(PT.object).isRequired        
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        loading: state.main.quizzes.loading,
+        error: state.main.quizzes.error,
+        quizzes: state.main.quizzes.data
+    }
+}
 
-export default ResultQuizzes;
+export default connect(mapStateToProps)(ResultQuizzes)
