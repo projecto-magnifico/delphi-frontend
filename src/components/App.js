@@ -20,8 +20,8 @@ class App extends Component {
                                     exact path="/"
                                     render={() =>
                                         <Earth
-                                            width={700}
-                                            height={500}
+                                            width={1200}
+                                            height={1000}
                                         />
                                     }
                                 />
