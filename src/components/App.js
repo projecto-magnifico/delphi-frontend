@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import BreakingNews from './BreakingNews'
 import Earth from './Earth';
+import PredictionBoard from './PredictionBoard'
 import AdminHome from '../admin/components/AdminHome';
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
