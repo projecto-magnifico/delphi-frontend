@@ -1,16 +1,19 @@
 import React from 'react';
 import PT from 'prop-types';
 import { connect} from 'react-redux';
-
+import Quiz from './Quiz';
 class ResultQuizzes extends React.Component {
     render () {
         return (
             <div className="uk-card uk-card-default uk-card-body">
-                ResultQuizzes
+                {this.props.quizzes.map(quiz => {
+                    <Quiz>
+                        quiz={quiz}
+                    </Quiz>
+                })}
             </div>
         );
     }
-
 
     static propTypes = {
         loading: PT.bool.isRequired,

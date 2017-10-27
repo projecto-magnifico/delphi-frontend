@@ -1,23 +1,25 @@
 import React from 'react';
 import PT from 'prop-types';
-import { connect} from 'react-redux';
-
-
+import { connect } from 'react-redux';
+import Keyword from './Keyword';
 
 class ResultKeywords extends React.Component {
-    render () {
+    render() {
         return (
             <div className="uk-card uk-card-default uk-card-body">
-                ResultKeywords
+                {this.props.keywords.map(keyword => {
+                    <Keyword>
+                        keyword={keyword}
+                    </Keyword>
+                })}
             </div>
         );
     }
 
-
     static propTypes = {
         loading: PT.bool.isRequired,
         error: PT.any,
-        keywords: PT.arrayOf(PT.object).isRequired,        
+        keywords: PT.arrayOf(PT.object).isRequired,
     }
 }
 

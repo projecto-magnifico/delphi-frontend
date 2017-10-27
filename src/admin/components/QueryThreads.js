@@ -7,16 +7,39 @@ import {fetchThreadsForAdmin} from '../../actions'
 class QueryThreads extends React.Component {
     render() {
         return (
-            <div className="uk-card uk-card-default uk-card-body">
-                <button class="uk-button uk-button-default uk-button-large">
-                    Find Top Threads
-                </button>
+            <div className="box">
+                <p className="subtitle">Inspect Threads</p>
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" />
+                            Only select unnamed
+                        </label>
+                    </div>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="question" />
+                            No summary
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="question" />
+                            Summary > 3 days old
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="question" />
+                            Any summary
+                        </label>
+                    </div>
+                    <label class="label">Select the top...</label>
+                    <div class="control">
+                        <input class="input" type="number" placeholder="10"/>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </div>
             </div>
         );
-    }
-
-
-    static propTypes = {
     }
 }
 

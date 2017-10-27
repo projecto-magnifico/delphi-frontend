@@ -1,14 +1,18 @@
 import React from 'react';
 import PT from 'prop-types';
 import { connect} from 'react-redux';
-
+import Thread from './Thread';
 
 
 class ResultThreads extends React.Component {
     render () {
         return (
             <div className="uk-card uk-card-default uk-card-body">
-                ResultThreads
+                {this.props.threads.map(thread => {
+                    <Thread>
+                        thread={thread}
+                    </Thread>
+                })}
             </div>
         );
     }

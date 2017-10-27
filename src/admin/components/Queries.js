@@ -7,7 +7,7 @@ import QueryQuizzes from './QueryQuizzes';
 class Queries extends React.Component {
     render () {
         return (
-            <div className="uk-child-width-1-2 uk-grid-small uk-grid-match" uk-grid="true">
+            <div>
                 <QueryThreads />
                 <QueryKeywords />
                 <QueryQuizzes />

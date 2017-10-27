@@ -1,7 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
 
-
 class Thread extends React.Component {
     render () {
         return (
@@ -10,7 +9,6 @@ class Thread extends React.Component {
             </div>
         );
     }
-
 
     static propTypes = {
         thread : PT.object.isRequired

@@ -5,6 +5,7 @@ import Earth from './Earth';
 import AdminHome from '../admin/components/AdminHome';
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
+import 'bulma/css/bulma.css'
 
 class App extends Component {
     render() {
