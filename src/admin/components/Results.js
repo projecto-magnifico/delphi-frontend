@@ -16,7 +16,6 @@ class Results extends React.Component {
     }
 
     static propTypes = {
-        query : PT.string.isRequired
     }
 }
 
