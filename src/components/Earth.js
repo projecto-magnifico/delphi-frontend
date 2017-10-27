@@ -3,6 +3,7 @@ import * as three from 'three'
 import ReactDOM from 'react-dom'
 import OrbitControls from 'three-orbitcontrols'
 import cities from "./utils/utils.js"
+import locIcon  from '../maps/location-Icon.png';
 
 class Earth extends React.Component {
     constructor(props) {
@@ -56,6 +57,8 @@ class Earth extends React.Component {
         Scene.background = new three.Color('white')
 
         const Canvas = document.getElementById('openData');
+        Canvas.width = 1200;
+        Canvas.height = 1000
         const CanvassMaterial = new three.MeshBasicMaterial()
         CanvassMaterial.map = new three.CanvasTexture(Canvas)
         CanvassMaterial.transparent = true
@@ -68,24 +71,24 @@ class Earth extends React.Component {
         console.log(cities.findInSentence('Hello Cape Town',1));
         
         function addDataPoint (long, lat) {
+            // var img1 = new Image();
+            // img1.onload = function () {
+            //     context.drawImage(img1, long, lat, 100, 100)
+            // }
+            // img1.src = locIcon;
             context.beginPath();
-            context.arc(long,lat,0.8,0,2*Math.PI)
-            context.fillStyle = '#FF0000';
+            context.arc(long,lat,2,0,2*Math.PI)
+
+            context.fillStyle = 'red';
             context.fill();
-            context.lineWidth = 2;
+            context.lineWidth = 4;
             context.strokeStyle = 'red';
             context.stroke();
         }
 
-        
-
-        addDataPoint(88,41);
-        addDataPoint(74.0060,40.7128)
-        addDataPoint(50,45);
-        addDataPoint(195,45);
-        addDataPoint(150, 50)
-        addDataPoint(160, 40)
-        
+        addDataPoint(630,230);
+        addDataPoint(250,300);
+        addDataPoint(850,400);
          
         Scene.add(DataGlobe)
 
@@ -109,8 +112,6 @@ class Earth extends React.Component {
             marginRight: '0px',
             padding: '0px'
         }
-
-
         return (
             <div>
                 <div ref="anchor" style={style}>
