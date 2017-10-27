@@ -1,5 +1,7 @@
 import { expect } from 'chai';
-import reducer, { getInitialState } from '../reducers';
+import reducer from '../reducers';
+import { getInitialAdminState } from '../reducers/admin';
+import { getInitialMainState } from '../reducers/main';
 import * as actions from '../actions';
 import * as targets from '../actions/targets';
 const storiesData = [{ 'article': 'BBC' }, { 'article': 'the guardian' }, { 'article': 'the times' }];
@@ -8,72 +10,64 @@ const quizzesData = [{ 'quiz': 'hi' }, { 'quiz': 'bye' }, { 'quiz': 'why?' }];
 describe('reducer', () => {
     describe('default behaviour', () => {
         it('returns the passed previous state if an unrecognised action is passed', () => {
-            const prevState = getInitialState();
+            const prevState = getInitialMainState();
             const newState = reducer(prevState, undefined);
-            expect(newState).to.equal(prevState);
+            console.log("new", newState.main)
+            console.log("prev", prevState)
+            expect(newState.main).to.eql(prevState);
         });
-        it('returns the initial state no state is passed is passed', () => {
+        it('returns the initial state if no state is passed', () => {
             const action = actions.fetchRequest(targets.QUIZZES)
             const newState = reducer(undefined, action);
-            const prevState = getInitialState();            
-            prevState.quizzesLoading = true;
-            expect(newState).to.eql(prevState);
+            const prevState = getInitialMainState();
+            prevState.quizzes.loading = true;
+            expect(newState.main).to.eql(prevState);
         });
     });
     describe('actions::fetchRequest', () => {
         it('updates the relevant loading properties', () => {
-            const prevState = getInitialState();
-            prevState.storiesData = storiesData;
-            prevState.storiesLoadingError = 'err!';            
+            const prevState = getInitialMainState();
+            prevState.stories.data = storiesData;
+            prevState.stories.error = 'err!';            
             const action = actions.fetchRequest(targets.STORIES)
             const newState = reducer(prevState, action);
-            expect(newState.storiesLoading).to.equal(true);    
-            expect(newState.storiesData).to.eql([]);
-            expect(newState.storiesLoadingError).to.equal(null);            
+            expect(newState.main.stories.loading).to.equal(true);    
+            expect(newState.main.stories.data).to.eql([]);
+            expect(newState.main.stories.error).to.equal(null);            
         })
     });
     describe('actions::fetchSuccess', () => {
         it('updates the relevant loading properties', () => {
-            const prevState = getInitialState();
-            prevState.quizzesLoading = true;
-            prevState.quizzesData = quizzesData;            
+            const prevState = getInitialMainState();
+            prevState.quizzes.loading = true;
+            prevState.quizzes.data = quizzesData;            
             const action = actions.fetchSuccess(quizzesData, targets.QUIZZES)
             const newState = reducer(prevState, action);
-            expect(newState.quizzesLoading).to.equal(false);
-            expect(newState.quizzesData).to.eql(quizzesData);
-            expect(newState.quizzesLoadingError).to.equal(null);
+            expect(newState.main.quizzes.loading).to.equal(false);
+            expect(newState.main.quizzes.data).to.eql(quizzesData);
+            expect(newState.main.quizzes.error).to.equal(null);
         })
     });
     describe('actions::fetchFailure', () => {
         it('updates the relevant loading properties', () => {
-            const prevState = getInitialState();
-            prevState.quizzesLoading = true;
+            const prevState = getInitialMainState();
+            prevState.quizzes.loading = true;
             const action = actions.fetchFailure({err: 'err'}, targets.QUIZZES)
             const newState = reducer(prevState, action);
-            expect(newState.quizzesLoading).to.equal(false);
-            expect(newState.quizzesLoadingError).to.eql({err: 'err'});
+            expect(newState.main.quizzes.loading).to.equal(false);
+            expect(newState.main.quizzes.error).to.eql({err: 'err'});
         })
     });
     describe('actions::select&deselectElement', () => {
         it('updates the relevant focus indices', () => {
-            const prevState = getInitialState();
-            prevState.storyFocusIndex = 5;
-            prevState.adminKeywordsFocusIndex = 55;            
+            const prevState = getInitialMainState();
+            prevState.stories.focusIndex = 5;
             let action = actions.selectElement(2, targets.QUIZZES)
             let newState = reducer(prevState, action);
-            expect(newState.quizzesFocusIndex).to.equal(2);
-            action = actions.deselectElement(targets.STORIES)
+            expect(newState.main.quizzes.focusIndex).to.equal(2);
+            action = actions.deselectElement(targets.STORIES);
             newState = reducer(newState, action);
-            expect(newState.storyFocusIndex).to.equal(-1);
-            action = actions.selectElement(14, targets.THREADS)
-            newState = reducer(newState, action);
-            expect(newState.adminThreadsFocusIndex).to.equal(14);
-            action = actions.deselectElement(targets.KEYWORDS)
-            newState = reducer(newState, action);
-            expect(newState.adminKeywordsFocusIndex).to.equal(-1);
-            action = actions.selectElement(444, targets.ARTICLES)
-            newState = reducer(newState, action);
-            expect(newState.adminArticlesFocusIndex).to.equal(444);
+            expect(newState.main.stories.focusIndex).to.equal(-1);
         })
     });
 });
