@@ -31,3 +31,7 @@
     width: 450px;
 
 }
+
+.uk-container .thing {
+    display: inline;
+}

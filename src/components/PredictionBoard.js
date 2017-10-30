@@ -1,5 +1,6 @@
 import React from 'react'
 import Prediction from './Prediction.js'
+import AnswerGroups from './AnswerGroups.js'
 
 class PredictionBoard extends React.Component {
     constructor(props){
@@ -7,12 +8,17 @@ class PredictionBoard extends React.Component {
     }
     render () {
         return (
-            <div id ='predictionCard' className="uk-card-default">
-                <div id="CurrentQuestion" className="tile">
-                    <h1>What will the outcome of the Spanish election be?</h1>
-                    <a href="" uk-icon="icon: info"></a>
+            <div className="uk-container">
+                <div id='predictionCard' className="uk-card-default thing">
+                    <div id="CurrentQuestion" className="tile">
+                        <h1>What will the outcome of the Spanish election be?</h1>
+                        <a href="" uk-icon="icon: info"></a>
+                    </div>
+                    <div className="uk-container thing">
+                        <Prediction />
+                        <AnswerGroups />
+                    </div>
                 </div>
-                <Prediction/>
             </div>
         )
     }
