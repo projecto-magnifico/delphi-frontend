@@ -4,7 +4,6 @@ import {Box} from 'bloomer';
 class AnswerGroups extends React.Component {
     constructor(props) {
         super(props)
-        
     }
  
     render() {
@@ -12,15 +11,17 @@ class AnswerGroups extends React.Component {
         return (
             <div>
                 <div id="answerGroups" className="tile is-parent tile uk-card-hover uk-card-default">
-                    <Box className="tile answerGroup" >
-                        <h3>Mariano Rajoy will regisn as prime-minister</h3>
-                    </Box>
-                    <Box className="tile answerGroup" >
-                        <h3>Spanish government will block Catalonian independence</h3>
-                    </Box>
-                    <Box className="tile answerGroup">
+                    {this.props.answerOptions.map(answerOption => {
+                        return (
+                           <Box className="tile answerGroup uk-card-default" >
+                        <h2>Did you mean...</h2>
+                        <h3>{answerOption}</h3>
+                            </Box>
+                        )
+                    })}
+                    <Box className="tile answerGroup uk-card-default">
                         <h3>Create new prediction</h3>
-                    </Box>  
+                    </Box>
                 </div>    
             </div>
         )

@@ -6,4 +6,4 @@ const findSuggestions = (initialAnswers, usersAnswer) => {
 
 }
 
-module.exports = findSuggestions;
+export default findSuggestions;

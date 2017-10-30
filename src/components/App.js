@@ -22,22 +22,24 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                    <div onClick={this.changeModal} className="App">
+                    <div className="All">
                                 <Route
                                     exact path="/"
                                     render={() =>
                                     (
                                         <div style={{display: 'inline-block'}}>
-                                            <div className='uk-align-left uk-width-1-2'>
+                                            <div className='uk-align-left uk-width-1-2 All'>
                                                 <Earth
                                                     width={this.state.earthWidth}
                                                     height={this.state.earthHeight}
                                                 />
                                             </div>
-                                            <div className='uk-align-right uk-width-1-4'>
+                                            <div className='uk-align-right uk-width-1-4 All'>
                                                 <BreakingNews />
                                             </div>
-                                            <PredictionBoard />
+                                            <div className="All">
+                                                <PredictionBoard />
+                                            </div>
                                         </div>
                                     )
                                     }

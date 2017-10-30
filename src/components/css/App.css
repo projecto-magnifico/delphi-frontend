@@ -1,79 +1,101 @@
 
-.App {
+.All {
     font-family: 'Varela', sans-serif;
 }
 
 #predictionBoard {
 
-   /* display: block; */
-   border: 1px solid tomato;
-   width: 1150px;
+   width: 1300px;
    padding: 2px;
    height: 450px;
+   margin-left: 10px;
 }
 
-
 .predictionBody {
+    
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-left: 10px;
+    margin-left: 10px;   
+}
+
+#predictionSection {
+    
+    margin-left: 5px;
+    border : 0.5px solid black;
+    margin-top: 5px;
 }
 
 .predictionText {
+    
     width: 500px;
 }
 
 #answerGroups {
-
-
+ 
     height: 350px;
     display: block;
+}
+
+.answerGroup h3,h2 {
+
+    height: 100px;
+    width: 525px;
+    display: inline-block;
+    font-family: 'Varela', sans-serif;
+    margin-right: 30px;
     
 }
 
 .answerGroup {
-
+    
     height: 100px;
-    /*margin-bottom: 2px;*/
-    width: 525px;
+    width: 680px;
     display: inline-block;
-
+    font-family: 'Varela', sans-serif;
+    border: 0.5px solid black;
 }
 
 .answerGroup:hover {
     
     height: 100px;
-    /*margin-bottom: 2px;*/
-    width: 525px;
+    width: 680px;
     display: inline-block;
     background-color: lightgreen;
-    
-    }
+    font-family: 'Varela', sans-serif;
+    border: 0.5px solid black;
+}
 
 #currentQuestion {
+    
+    height: 100px;
+    width: 540px;
+    font-family: 'Varela', sans-serif;
+    border : 0.5px solid black;
+
+  }
+
+#currentQuestion h1 {
   
     height: 100px;
     width: 540px;
     font-family: 'Varela', sans-serif;
+
 }
 
 .fa-info-circle {
 
-    border: 1px solid red;
     margin-right: 8px;
 }
 
 .fa-info-circle:hover {
     
     color: blue;
-    border: 1px solid red;
     margin-right: 8px;
-    }
+}
 
 .fa-times.tile {
 
     margin-left: 440px;
-    /* margin-right: 10px; */
     padding-left: 120px;
 }
 
@@ -81,13 +103,17 @@
     
     color: blue;
     margin-left: 440px;
-    /* margin-right: 10px; */
     padding-left: 120px;
-    }
+}
 
 #modalBody {
     width: 630px;
     height: 700px;
+}
+
+#modalBody h1 {
+
+    font-family: 'Varela', sans-serif;
 }
 
 .notification {
