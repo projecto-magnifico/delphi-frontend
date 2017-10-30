@@ -1,6 +1,7 @@
 import React from 'react'
 import Prediction from './Prediction.js'
 import AnswerGroups from './AnswerGroups.js'
+import {Box} from 'bloomer';
 
 class PredictionBoard extends React.Component {
     constructor(props){
@@ -8,17 +9,20 @@ class PredictionBoard extends React.Component {
     }
     render () {
         return (
-            <div className="uk-container">
-                <div id='predictionCard' className="uk-card-default thing">
-                    <div id="CurrentQuestion" className="tile">
-                        <h1>What will the outcome of the Spanish election be?</h1>
-                        <a href="" uk-icon="icon: info"></a>
-                    </div>
-                    <div className="uk-container thing">
-                        <Prediction />
-                        <AnswerGroups />
-                    </div>
+            <div>
+                <Box id="predictionBoard" className="tile uk-card-hover uk-card-default">
+                    <Box id="predictionSection">
+                <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
+                    <h1>What will the outcome of the Spanish election be?</h1>
+                </Box>
+                <div className="predictionBody">
+                    <Prediction />
                 </div>
+                    </Box>
+                <div className="answerGroups">
+                    <AnswerGroups />
+                </div> 
+                </Box>             
             </div>
         )
     }

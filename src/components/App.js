@@ -8,19 +8,21 @@ import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
 import './css/App.css'
 import 'bulma/css/bulma.css'
+import 'font-awesome/css/font-awesome.min.css';
+
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            earthWidth : 800,
-            earthHeight : 600
+            earthWidth : 700,
+            earthHeight : 500,
         }
     }
     render() {
         return (
             <BrowserRouter>
-                    <div className="App">
+                    <div onClick={this.changeModal} className="App">
                                 <Route
                                     exact path="/"
                                     render={() =>
@@ -35,9 +37,7 @@ class App extends Component {
                                             <div className='uk-align-right uk-width-1-4'>
                                                 <BreakingNews />
                                             </div>
-                                            <div className="tile">
                                             <PredictionBoard />
-                                                </div>
                                         </div>
                                     )
                                     }

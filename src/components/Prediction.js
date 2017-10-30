@@ -1,33 +1,52 @@
 import React from 'react'
 import './css/NewsCard.css'
+import {Label, Control, TextArea, Field, Modal, ModalBackground, ModalContent, ModalClose, ModalCardBody, Notification} from 'bloomer';
+
 
 class Prediction extends React.Component {
     constructor(props) {
-        super(props)
-        
+        super(props);
+        this.state = {
+            modalActive : true 
+        }
+        this.displayInfo = this.displayInfo.bind(this);
     }
 
-    
-    
+    displayInfo () {
+     
+       const newModalActive = !this.state.modalActive;
+       this.setState({
+           modalActive: newModalActive
+       })
+    }
+
     render() {
        
         return (
-            <div id="particles">
-                <div>
-                    <div id="card">
-                        <div className="uk-card uk-card-body" id="newsBody">
-                        <div id="PredictionBody" className="tile">
-                    <label class="label"></label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="What happens next..."></textarea>
-                        <div class="control">
-                        <button class="button is-link" style={{display: "none"}}>Submit</button>
-                        </div>
-                    </div>
-                    </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="tile">
+                <i onClick={this.displayInfo} className="fa fa-info-circle" aria-hidden="true"></i>
+                <Modal id="predictionInfo" isActive={this.state.modalActive}>
+                    <ModalBackground />
+                        <ModalContent>
+                    {/* Any other Bulma elements you want */}
+                            <ModalCardBody id="modalBody">
+                                    <i onClick={this.displayInfo} className="fa fa-times tile is-3" aria-hidden="true"></i>
+                                <h1>Making a prediction</h1>
+                                <Notification ></Notification>
+                                {/* <Notification className="notification"> </Notification>
+                                <Notification className="notification"> </Notification> */}
+                            </ModalCardBody>
+                        </ModalContent>
+                    {/* <ModalClose /> */}
+                </Modal>
+                <Field>
+                    <Label>What happens next...</Label>
+                    <Control>
+                        <div className="predictionText">
+                            <TextArea  placeholder={'Prediction here'} />
+                        </div>    
+                    </Control>
+                </Field>         
             </div>
         )
     }
