@@ -1,0 +1,33 @@
+#predictions {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 50px;
+}
+/* #predictionCard {
+    
+    
+} */
+
+.tile {
+
+    height: 290px;
+    display: block;
+    width: 1400px;
+
+}
+
+#CurrentQuestion {
+  
+    height: 80px;
+    display: block;
+    width: 450px;
+
+}
+
+#PredictionBody {
+  
+    height: 170px;
+    display: block;
+    width: 450px;
+
+}

@@ -6,24 +6,40 @@ import PredictionBoard from './PredictionBoard'
 import AdminHome from '../admin/components/AdminHome';
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
+import './css/App.css'
+import 'bulma/css/bulma.css'
 
 class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            earthWidth : 800,
+            earthHeight : 600
+        }
+    }
     render() {
         return (
             <BrowserRouter>
-                <div>
                     <div className="App">
-                        <header className="App-header">
-                        </header>
-                        <div uk-grid="true">
-                            <div className='uk-align-left'>
                                 <Route
                                     exact path="/"
                                     render={() =>
-                                        <Earth
-                                            width={1200}
-                                            height={1000}
-                                        />
+                                    (
+                                        <div style={{display: 'inline-block'}}>
+                                            <div className='uk-align-left uk-width-1-2'>
+                                                <Earth
+                                                    width={this.state.earthWidth}
+                                                    height={this.state.earthHeight}
+                                                />
+                                            </div>
+                                            <div className='uk-align-right uk-width-1-4'>
+                                                <BreakingNews />
+                                            </div>
+                                            <div className="tile">
+                                            <PredictionBoard />
+                                                </div>
+                                        </div>
+                                    )
                                     }
                                 />
                                 <Route
@@ -35,19 +51,6 @@ class App extends Component {
                                     }
                                 />
                             </div>
-                            <div className='uk-align-right uk-width-1-4'>
-                                <Route
-                                    exact path="/"
-                                    render={() =>
-                                        <BreakingNews />
-                                    }
-                                />
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
             </BrowserRouter>
         );
     }

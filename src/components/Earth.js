@@ -45,7 +45,7 @@ class Earth extends React.Component {
         const Globe = new three.Mesh(Geometry, Material)
 
         const Camera = new three.PerspectiveCamera(75, width/height, 1, 1000)
-        Camera.position.z = 6
+        Camera.position.z = 5
 
         const Controls = new OrbitControls(Camera, Renderer.domElement)
         Controls.enableDamping = true
@@ -116,7 +116,7 @@ class Earth extends React.Component {
             <div>
                 <div ref="anchor" style={style}>
                 </div>
-                <canvas id="openData"></canvas>
+                <canvas style={{display: 'none'}}id="openData"></canvas>
             </div>
         )
     }
