@@ -18,11 +18,6 @@ class Earth extends React.Component {
         Renderer.shadowMap.enabled = true
         Renderer.shadowMap.type = three.PCFSoftShadowMap
 
-        const Light = new three.DirectionalLight('white', 6)
-        Light.position.set( 1, 1, 1 ).normalize();
-        Light.castShadow = true;
-        Scene.add(Light)
-
         const Geometry = new three.SphereGeometry( 3, 32, 32 )
         const Loader = new three.TextureLoader()
         const Material = new three.MeshStandardMaterial(
@@ -47,6 +42,11 @@ class Earth extends React.Component {
         const Camera = new three.PerspectiveCamera(75, width/height, 1, 1000)
         Camera.position.z = 5
 
+        const PositionLight = new three.PointLight( 'white', 6 );
+        PositionLight.position.set(1,1,2);
+        Camera.add(PositionLight);
+        Scene.add(Camera)
+
         const Controls = new OrbitControls(Camera, Renderer.domElement)
         Controls.enableDamping = true
         Controls.dampingFactor = 0.25
@@ -57,8 +57,8 @@ class Earth extends React.Component {
         Scene.background = new three.Color('white')
 
         const Canvas = document.getElementById('openData');
-        Canvas.width = 1200;
-        Canvas.height = 1000
+        Canvas.width = this.props.width;
+        Canvas.height = this.props.height;
         const CanvassMaterial = new three.MeshBasicMaterial()
         CanvassMaterial.map = new three.CanvasTexture(Canvas)
         CanvassMaterial.transparent = true
@@ -66,10 +66,7 @@ class Earth extends React.Component {
         const DataGlobe = new three.Mesh(Geometry, CanvassMaterial)
 
         
-        const context = Canvas.getContext('2d');
-        console.log(cities)
-        console.log(cities.findInSentence('Hello Cape Town',1));
-        
+        const context = Canvas.getContext('2d');    
         function addDataPoint (long, lat) {
             // var img1 = new Image();
             // img1.onload = function () {
@@ -79,16 +76,22 @@ class Earth extends React.Component {
             context.beginPath();
             context.arc(long,lat,2,0,2*Math.PI)
 
+            context.moveTo(486,113);
+            context.lineTo(230,180);
+            context.lineWidth=0.5;
+
+            context.moveTo(230,180);
+            context.lineTo(530,353)
+
             context.fillStyle = 'red';
             context.fill();
-            context.lineWidth = 4;
             context.strokeStyle = 'red';
             context.stroke();
         }
 
-        addDataPoint(630,230);
-        addDataPoint(250,300);
-        addDataPoint(850,400);
+        addDataPoint(486,113);
+        addDataPoint(230,180);
+        addDataPoint(530,353)
          
         Scene.add(DataGlobe)
 
@@ -113,7 +116,7 @@ class Earth extends React.Component {
             padding: '0px'
         }
         return (
-            <div>
+            <div className ='tile earth'>
                 <div ref="anchor" style={style}>
                 </div>
                 <canvas style={{display: 'none'}}id="openData"></canvas>
