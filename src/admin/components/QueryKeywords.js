@@ -22,28 +22,28 @@ class QueryKeywords extends React.Component {
         return (
             <div className="box">
                 <p className="subtitle">Inspect Keywords</p>
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
+                <div className="field">
+                    <div className="control">
+                        <label className="checkbox">
                         <input type="checkbox" checked={this.state.checkboxChecked} onChange={this.handleCheck}/>
                         Only select untagged
                         </label>
                     </div>
-                    <div class="control">
+                    <div className="control">
                         <input type="radio" name="question" value="top" onFocus={this.handleFocus} />
-                        <label class="radio">
+                        <label className="radio">
                         Show the top...
                         </label>
                         <input type="radio" name="question" value="important" onFocus={this.handleFocus} />
-                        <label class="radio">
+                        <label className="radio">
                         Show from threads ranked 1 to...
                         </label>
                     </div>
-                    <div class="control">
-                    <input class="input" type="number" value={this.state.value} placeholder="10" onChange={this.handleChange}/>
+                    <div className="control">
+                    <input className="input" type="number" value={this.state.value} placeholder="10" onChange={this.handleChange}/>
                     </div>
-                    <div class="control">
-                    <button class="button is-link" type="submit">Submit</button>
+                    <div className="control">
+                    <button className="button is-link" type="submit">Submit</button>
                     </div>
                 </div>
             </div>

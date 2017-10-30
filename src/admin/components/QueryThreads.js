@@ -22,33 +22,33 @@ class QueryThreads extends React.Component {
         return (
             <form className="box" onSubmit={this.handleSubmit}>
                 <p className="subtitle">Inspect Threads</p>
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
+                <div className="field">
+                    <div className="control">
+                        <label className="checkbox">
                             <input type="checkbox" checked={this.state.checkboxChecked} onChange={this.handleCheck}/>
                             Only select unnamed
                         </label>
                     </div>
-                    <div class="control">
-                        <label class="radio">
+                    <div className="control">
+                        <label className="radio">
                             <input type="radio" name="question" value="null" onFocus={this.handleFocus} />
                             No summary
                         </label>
-                        <label class="radio">
+                        <label className="radio">
                             <input type="radio" name="question" value="due" onFocus={this.handleFocus}/>
                             Summary due
                         </label>
-                        <label class="radio">
+                        <label className="radio">
                             <input type="radio" name="question" value="any" onFocus={this.handleFocus}/>
                             Any summary
                         </label>
                     </div>
-                    <label class="label">Select the top...</label>
-                    <div class="control">
-                        <input class="input" type="number" value={this.state.count} placeholder="10" onChange={this.handleChange}/>
+                    <label className="label">Select the top...</label>
+                    <div className="control">
+                        <input className="input" type="number" value={this.state.count} placeholder="10" onChange={this.handleChange}/>
                     </div>
-                    <div class="control">
-                        <button class="button is-link" type="submit">Submit</button>
+                    <div className="control">
+                        <button className="button is-link" type="submit">Submit</button>
                     </div>
                 </div>
             </form>

@@ -3,15 +3,30 @@ import PT from 'prop-types';
 import { connect} from 'react-redux';
 import Thread from './Thread';
 
+const testThread = {
+    threadId : 1,
+    name : 'Catalonian Independence Crisis',
+    score : 15,
+    summary : [
+        '',
+        '',
+        ''
+    ],
+    lastUpdated : '23-10-17',
+    dateCreated : '21-10-18',
+    imgUrl : "https://ichef.bbci.co.uk/news/624/cpsprodpb/167AA/production/_93547029_spaincatalonia4641114.png"
+}
 
 class ResultThreads extends React.Component {
+
     render () {
         return (
             <div className="box">
-                {this.props.threads.map(thread => {
-                    <Thread>
-                        thread={thread}
-                    </Thread>
+                {[1].map((thread, i) => {
+                    return <Thread
+                        thread={testThread}
+                        key={i}
+                    />
                 })}
             </div>
         );

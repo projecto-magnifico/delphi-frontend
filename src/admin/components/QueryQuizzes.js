@@ -18,36 +18,36 @@ class QueryQuizzes extends React.Component {
         return (
             <div className="box">
                 <p className="subtitle">Inspect Quizzes</p>
-                <div class="field">
-                <label class="label">Show...</label>
-                <div class="control">
-                    <label class="radio">
+                <div className="field">
+                <label className="label">Show...</label>
+                <div className="control">
+                    <label className="radio">
                         <input type="radio" name="question" value="open" onFocus={this.handleFocus} />
                         ...open
                     </label>
-                    <label class="radio">
+                    <label className="radio">
                         <input type="radio" name="question" value="waiting" onFocus={this.handleFocus} />
                         ...waiting
                     </label>
-                    <label class="radio">
+                    <label className="radio">
                         <input type="radio" name="question" value="pending" onFocus={this.handleFocus} />
                         ...pending
                     </label>
-                    <label class="radio">
+                    <label className="radio">
                         <input type="radio" name="question" value="closed" onFocus={this.handleFocus} />
                         ...closed
                     </label>
-                    <label class="radio">
+                    <label className="radio">
                         <input type="radio" name="question" value="revisit" onFocus={this.handleFocus} />
                         ...next to revisit
                     </label>
                 </div>
-                <label class="label">Select the top...</label>
-                <div class="control">
-                    <input class="input" type="number" placeholder="choose number" onChange={this.handleChange}/>
+                <label className="label">Select the top...</label>
+                <div className="control">
+                    <input className="input" type="number" placeholder="choose number" onChange={this.handleChange}/>
                 </div>
-                <div class="control">
-                <button class="button is-link" type="submit">Submit</button>
+                <div className="control">
+                <button className="button is-link" type="submit">Submit</button>
                 </div>
             </div>
             </div>

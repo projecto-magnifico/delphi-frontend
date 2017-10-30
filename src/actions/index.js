@@ -96,22 +96,20 @@ export const fetchKeywordsForAdmin = (query) => {
     };
 };
 
-    // export const fetchArticlesForAdmin = (id, query) => {
-    //     return (dispatch) => {
-    //         dispatch(fetchRequest(targets.ARTICLES));
-    //         return axios.get(`${API_URL}/articles?${query}`)
-    //         .then(res => {  
-    //             dispatch(fetchSuccess({
-    //                 data: res.data,
-    //             }, targets.ARTICLES));
-    //         })
-    //         .catch(error => {
-    //             dispatch(fetchFailure({
-    //                 error: error,
-    //             }, targets.ARTICLES));
-    //         });
-    //     };
-    // };
+export const fetchArticlesForAdmin = (id) => {
+    return (dispatch) => {
+        dispatch(fetchRequest(targets.ARTICLES));
+        return axios.get(`${API_URL}/threads/${id}/articles`)
+            .then(res => {  
+                dispatch(fetchSuccess({
+                    data: res.data,
+                }, targets.ARTICLES));
+            })
+            .catch(error => {
+                dispatch(fetchFailure(error, targets.ARTICLES));
+            });
+    };
+};
 
 export const selectElement = (index, target) => ({
     type: types.SELECT_ELEMENT,
@@ -130,70 +128,72 @@ export const dismissElement = (index, target) => ({
     target: target
 });
 
-export const patchRequest = (url, target) => ({
+export const patchRequest = (url, target, index) => ({
     type: types.PATCH_REQUEST,
-    payload: { url },
+    payload: { url, index },
     target: target
 });
 
-export const patchSuccess = (data, url, target) => ({
+export const patchSuccess = (data, url, target, index) => ({
     type: types.PATCH_SUCCESS,
     payload: { data, url },
     target: target
 });
 
-export const patchFailure = (error, url, message, target) => ({
+export const patchFailure = (error, url, message, target, index) => ({
     type: types.PATCH_FAILURE,
-    payload: { error, url, message },
+    payload: { error, url, index, message },
     target: target
 });
 
-export const patchResend = (url, message, target) => {
+export const patchResend = (url, message, target, index) => {
     return (dispatch) => {
         dispatch(patchRequest(url, target));
         return axios.patch(url, message)
             .then(res => {
                 dispatch(patchSuccess({
                     data: res.data,
-                }, url, target));
+                }, url, target, index));
             })
             .catch(error => {
-                dispatch(patchFailure(error, url, message, target));
+                dispatch(patchFailure(error, url, message, target, index));
             });
     };
 };
 
-export const patchNameToThread = (thread_id, name) => {
+export const patchToThread = (thread_id, newData, index) => {
     return (dispatch) => {
         const url = `${API_URL}/threads/${thread_id}`;
-        dispatch(patchRequest(url, targets.THREADS));
-        return axios.patch(url, { name })
+        dispatch(patchRequest(url, targets.THREADS, index));
+        return axios.patch(url, { newData })
             .then(res => {
                 dispatch(patchSuccess({
                     data: res.data,
-                }, url, targets.THREADS));
+                }, url, targets.THREADS, index));
             })
             .catch(error => {
-                dispatch(patchFailure(error, url, name, targets.THREADS));
+                dispatch(patchFailure(error, url, newData, targets.THREADS, index));
             });
     };
 };
 
-export const patchTagToKeyword = (keyword_id, tag) => {
+
+export const patchTagToKeyword = (keyword_id, tag, index) => {
     return (dispatch) => {
         const url = `${API_URL}/keywords/${keyword_id}`;
-        dispatch(patchRequest(targets.KEYWORDS));
+        dispatch(patchRequest(targets.KEYWORDS, index));
         return axios.patch(url, { tag })
             .then(res => {
                 dispatch(patchSuccess({
                     data: res.data,
-                }, url, targets.KEYWORDS));
+                }, url, targets.KEYWORDS, index));
             })
             .catch(error => {
-                dispatch(patchFailure(error, url, tag, targets.KEYWORDS));
+                dispatch(patchFailure(error, url, tag, targets.KEYWORDS, index));
             });
     };
 };
+
 
 export const postRequest = (url, target) => ({
     type: types.POST_REQUEST,
@@ -255,7 +255,7 @@ export const postNewArticle = (thread_id, article) => {
                 }, url));
             })
             .catch(error => {
-                dispatch(postFailure(error, url, tag));
+                dispatch(postFailure(error, url, article));
             });
     };
 };

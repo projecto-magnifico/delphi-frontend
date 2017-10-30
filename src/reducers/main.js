@@ -50,6 +50,7 @@ export default (prevState = getInitialMainState(), action) => {
                 })
             });
         }
+        break;
     case types.FETCH_SUCCESS:
         switch (action.target) {
         case targets.STORIES:
@@ -69,6 +70,7 @@ export default (prevState = getInitialMainState(), action) => {
                 })
             });
         }
+        break;
     case types.FETCH_FAILURE:
         switch (action.target) {
         case targets.STORIES:
@@ -88,6 +90,7 @@ export default (prevState = getInitialMainState(), action) => {
                 })
             });
         }
+        break;
     case types.SELECT_ELEMENT:
         switch (action.target) {
         case targets.STORIES:
@@ -103,6 +106,7 @@ export default (prevState = getInitialMainState(), action) => {
                 })
             });
         }
+        break;
     case types.DESELECT_ELEMENT:
         switch (action.target) {
         case targets.STORIES:
@@ -118,6 +122,7 @@ export default (prevState = getInitialMainState(), action) => {
                 })
             });
         }
+        break;
     default:
         return prevState;
     }

@@ -5,6 +5,7 @@ import ResultQuizzes from './ResultQuizzes';
 import ResultThreads from './ResultThreads';
 
 class Results extends React.Component {
+    
     render () {
         return (
             <div className="box">
@@ -14,6 +15,8 @@ class Results extends React.Component {
             </div>
         );
     }
+
+    
 
     static propTypes = {
     }

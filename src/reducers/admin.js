@@ -7,7 +7,9 @@ const request = {
     posting: true,
     error: null,
     response: null,
-    url: ''
+    url: '',
+    target: '',
+    index: -1
 };
 
 export const getInitialAdminState = () => {
@@ -42,7 +44,6 @@ export const getInitialAdminState = () => {
 
 export default (prevState = getInitialAdminState(), action) => {
     if (!action) return prevState;
-    console.log('reducing', prevState.threads);
     switch (action.type) {
     case types.FETCH_REQUEST:
         switch (action.target) {
@@ -70,14 +71,16 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                loading: true,
-                error: null,
-                data: []
-            })
-        });
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    loading: true,
+                    error: null,
+                    data: []
+                })
+            });
         }
+        break;
     case types.FETCH_SUCCESS:
         switch (action.target) {
         case targets.THREADS:
@@ -104,14 +107,16 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: action.payload.data
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                loading: false,
-                error: null,
-                data: action.payload.data
-            })
-        });
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    loading: false,
+                    error: null,
+                    data: action.payload.data
+                })
+            });
         }
+        break;
     case types.FETCH_FAILURE:
         switch (action.target) {
         case targets.THREADS:
@@ -138,14 +143,16 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                loading: false,
-                error: action.payload.error,
-                data: []
-            })
-        });
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    loading: false,
+                    error: action.payload.error,
+                    data: []
+                })
+            });
         }
+        break;
     case types.SELECT_ELEMENT:
         switch (action.target) {
         case targets.THREADS:
@@ -166,12 +173,14 @@ export default (prevState = getInitialAdminState(), action) => {
                     focusIndex: action.payload.index
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                focusIndex: action.payload.index
-            })
-        });
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    focusIndex: action.payload.index
+                })
+            });
         }
+        break;
     case types.DESELECT_ELEMENT:
         switch (action.target) {
         case targets.THREADS:
@@ -192,12 +201,14 @@ export default (prevState = getInitialAdminState(), action) => {
                     focusIndex: -1
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                focusIndex: -1
-            })
-        });
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    focusIndex: -1
+                })
+            });
         }
+        break;
     case types.DISMISS_ELEMENT:
         switch (action.target) {
         case targets.THREADS:
@@ -224,13 +235,14 @@ export default (prevState = getInitialAdminState(), action) => {
                     })
                 })
             });
-        case targets: return Object.assign({}, prevState, {
-            quizzes: Object.assign({}, prevState.quizzes, {
-                data: prevState.quizzes.data.filter((x, i) => {
-                    return i !== action.payload.index;
+        case targets.QUIZZES_ADMIN:
+            return Object.assign({}, prevState, {
+                quizzes: Object.assign({}, prevState.quizzes, {
+                    data: prevState.quizzes.data.filter((x, i) => {
+                        return i !== action.payload.index;
+                    })
                 })
-            })
-        });
+            });
         case targets.REQUESTS:
             return Object.assign({}, prevState, {
                 writing: prevState.writing.filter((x, i) => {
@@ -238,6 +250,7 @@ export default (prevState = getInitialAdminState(), action) => {
                 })
             });
         }
+        break;
     case types.PATCH_SUCCESS:
         return Object.assign({}, prevState, {
             requests: prevState.requests.map(patch => {
@@ -247,8 +260,8 @@ export default (prevState = getInitialAdminState(), action) => {
                         response: action.payload.data
                     });
                 } else return patch;
-            })
-        });
+            }),
+        }); 
     case types.PATCH_FAILURE:
         return Object.assign({}, prevState, {
             requests: prevState.requests.map(patch => {
@@ -265,14 +278,16 @@ export default (prevState = getInitialAdminState(), action) => {
         return Object.assign({}, prevState, {
             requests: prevState.requests.concat(
                 Object.assign({}, request, {
-                    url: action.payload.url
+                    url: action.payload.url,
+                    index: action.payload.index,
+                    target: action.target
                 })
             )
         });
     case types.PATCH_RESEND:
         return Object.assign({}, prevState, {
             requests: prevState.requests.map(patch => {
-                if (patch.url === action.payload.url) {
+                if (patch.target === action.target && patch.index === action.payload.index) {
                     return Object.assign({}, patch, {
                         posting: true,
                         error: null
