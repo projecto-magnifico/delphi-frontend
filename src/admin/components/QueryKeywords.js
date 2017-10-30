@@ -3,7 +3,6 @@ import PT from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchKeywordsForAdmin } from '../../actions'
 
-
 class QueryKeywords extends React.Component {
     constructor (props) {
         super (props);
@@ -18,6 +17,7 @@ class QueryKeywords extends React.Component {
         this.handleFocus = this.handleFocus.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     render() {
         return (
             <div className="box">
@@ -30,13 +30,13 @@ class QueryKeywords extends React.Component {
                         </label>
                     </div>
                     <div class="control">
-                        <label class="radio">
                         <input type="radio" name="question" value="top" onFocus={this.handleFocus} />
+                        <label class="radio">
                         Show the top...
                         </label>
+                        <input type="radio" name="question" value="important" onFocus={this.handleFocus} />
                         <label class="radio">
-                        <input type="radio" name="question" value="relevance" onFocus={this.handleFocus} />
-                        Show with relevance over...
+                        Show from threads ranked 1 to...
                         </label>
                     </div>
                     <div class="control">

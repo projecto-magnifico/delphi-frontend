@@ -4,7 +4,7 @@ import PT from 'prop-types';
 class Thread extends React.Component {
     render () {
         return (
-            <div>
+            <div className="box">
                 Thread
             </div>
         );

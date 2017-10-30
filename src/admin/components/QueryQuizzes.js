@@ -22,10 +22,6 @@ class QueryQuizzes extends React.Component {
                 <label class="label">Show...</label>
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="question" value="recent" onFocus={this.handleFocus} />
-                        ...recently added
-                    </label>
-                    <label class="radio">
                         <input type="radio" name="question" value="open" onFocus={this.handleFocus} />
                         ...open
                     </label>

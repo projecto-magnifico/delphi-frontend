@@ -37,7 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": " mocha --require babel-register ./spec/*",
+    "test": " mocha --require babel-register ./src/spec/*",
     "eject": "react-scripts eject",
     "posttest": "npm run lint",
     "lint": "eslint ./",
@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.9.0"
   }
 }

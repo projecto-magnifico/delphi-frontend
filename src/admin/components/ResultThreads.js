@@ -7,7 +7,7 @@ import Thread from './Thread';
 class ResultThreads extends React.Component {
     render () {
         return (
-            <div className="uk-card uk-card-default uk-card-body">
+            <div className="box">
                 {this.props.threads.map(thread => {
                     <Thread>
                         thread={thread}

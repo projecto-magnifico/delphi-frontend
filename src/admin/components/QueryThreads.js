@@ -35,8 +35,8 @@ class QueryThreads extends React.Component {
                             No summary
                         </label>
                         <label class="radio">
-                            <input type="radio" name="question" value="old" onFocus={this.handleFocus}/>
-                            Summary > 3 days old
+                            <input type="radio" name="question" value="due" onFocus={this.handleFocus}/>
+                            Summary due
                         </label>
                         <label class="radio">
                             <input type="radio" name="question" value="any" onFocus={this.handleFocus}/>

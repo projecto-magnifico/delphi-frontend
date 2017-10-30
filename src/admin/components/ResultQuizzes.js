@@ -5,7 +5,7 @@ import Quiz from './Quiz';
 class ResultQuizzes extends React.Component {
     render () {
         return (
-            <div className="uk-card uk-card-default uk-card-body">
+            <div className="box">
                 {this.props.quizzes.map(quiz => {
                     <Quiz>
                         quiz={quiz}

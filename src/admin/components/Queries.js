@@ -7,7 +7,7 @@ import QueryQuizzes from './QueryQuizzes';
 class Queries extends React.Component {
     render () {
         return (
-            <div>
+            <div className="box">
                 <QueryThreads />
                 <QueryKeywords />
                 <QueryQuizzes />
