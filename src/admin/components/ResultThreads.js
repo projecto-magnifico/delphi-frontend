@@ -17,6 +17,7 @@ const testThread = {
     imgUrl : "https://ichef.bbci.co.uk/news/624/cpsprodpb/167AA/production/_93547029_spaincatalonia4641114.png"
 }
 
+
 class ResultThreads extends React.Component {
 
     render () {
@@ -25,7 +26,9 @@ class ResultThreads extends React.Component {
                 {[1].map((thread, i) => {
                     return <Thread
                         thread={testThread}
+                        positionIndex={i}
                         key={i}
+                        tags={this.props.tags}
                     />
                 })}
             </div>
@@ -44,7 +47,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.admin.threads.loading,
         error: state.admin.threads.error,
-        threads: state.admin.threads.data
+        threads: state.admin.threads.data,
+        tags: state.admin.tags
     }
 }
 

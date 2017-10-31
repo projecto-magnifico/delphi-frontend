@@ -26,6 +26,12 @@ export const getInitialAdminState = () => {
             data: [],
             focusIndex: -1
         },
+        threadKeywords: {
+            loading: false,
+            error: null,
+            data: [],
+            focusIndex: -1
+        },
         articles: {
             loading: false,
             error: null,
@@ -38,7 +44,19 @@ export const getInitialAdminState = () => {
             data: [],
             focusIndex: -1
         },
-        requests: []
+        threadQuizzes: {
+            loading: false,
+            error: null,
+            data: [],
+            focusIndex: -1
+        },
+        tags: {
+            loading: false,
+            error: null,
+            data: [],
+            focusIndex: -1
+        },
+        requests: [],
     };
 };
 
@@ -55,6 +73,22 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
+        case targets.THREAD_KEYWORDS:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadKeywords, {
+                    loading: true,
+                    error: null,
+                    data: []
+                })
+            });
+        case targets.THREAD_QUIZZES:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadQuizzes, {
+                    loading: true,
+                    error: null,
+                    data: []
+                })
+            });
         case targets.KEYWORDS:
             return Object.assign({}, prevState, {
                 keywords: Object.assign({}, prevState.keywords, {
@@ -79,8 +113,10 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-        }
-        break;
+
+        default:
+        return prevState;
+    }
     case types.FETCH_SUCCESS:
         switch (action.target) {
         case targets.THREADS:
@@ -91,6 +127,22 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: action.payload.data
                 })
             });
+        case targets.THREAD_KEYWORDS:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadKeywords, {
+                    loading: false,
+                    error: null,
+                    data: action.payload.data
+                })
+            });
+        case targets.THREAD_QUIZZES:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadQuizzes, {
+                    loading: false,
+                    error: null,
+                    data: action.payload.data
+                })
+            });
         case targets.KEYWORDS:
             return Object.assign({}, prevState, {
                 keywords: Object.assign({}, prevState.keywords, {
@@ -115,8 +167,10 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: action.payload.data
                 })
             });
-        }
-        break;
+        
+        default:
+            return prevState;
+    }
     case types.FETCH_FAILURE:
         switch (action.target) {
         case targets.THREADS:
@@ -127,6 +181,22 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
+        case targets.THREAD_KEYWORDS:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadKeywords, {
+                    loading: false,
+                    error: action.payload.error,
+                    data: []
+                })
+            });
+        case targets.THREAD_QUIZZES:
+            return Object.assign({}, prevState, {
+                threadKeywords: Object.assign({}, prevState.threadQuizzes, {
+                    loading: false,
+                    error: action.payload.error,
+                    data: []
+                })
+            });
         case targets.KEYWORDS:
             return Object.assign({}, prevState, {
                 keywords: Object.assign({}, prevState.keywords, {
@@ -151,106 +221,10 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-        }
-        break;
-    case types.SELECT_ELEMENT:
-        switch (action.target) {
-        case targets.THREADS:
-            return Object.assign({}, prevState, {
-                threads: Object.assign({}, prevState.threads, {
-                    focusIndex: action.payload.index
-                })
-            });
-        case targets.KEYWORDS:
-            return Object.assign({}, prevState, {
-                keywords: Object.assign({}, prevState.keywords, {
-                    focusIndex: action.payload.index
-                })
-            });
-        case targets.ARTICLES:
-            return Object.assign({}, prevState, {
-                articles: Object.assign({}, prevState.articles, {
-                    focusIndex: action.payload.index
-                })
-            });
-        case targets.QUIZZES_ADMIN:
-            return Object.assign({}, prevState, {
-                quizzes: Object.assign({}, prevState.quizzes, {
-                    focusIndex: action.payload.index
-                })
-            });
-        }
-        break;
-    case types.DESELECT_ELEMENT:
-        switch (action.target) {
-        case targets.THREADS:
-            return Object.assign({}, prevState, {
-                threads: Object.assign({}, prevState.threads, {
-                    focusIndex: -1
-                })
-            });
-        case targets.KEYWORDS:
-            return Object.assign({}, prevState, {
-                keywords: Object.assign({}, prevState.keywords, {
-                    focusIndex: -1
-                })
-            });
-        case targets.ARTICLES:
-            return Object.assign({}, prevState, {
-                articles: Object.assign({}, prevState.articles, {
-                    focusIndex: -1
-                })
-            });
-        case targets.QUIZZES_ADMIN:
-            return Object.assign({}, prevState, {
-                quizzes: Object.assign({}, prevState.quizzes, {
-                    focusIndex: -1
-                })
-            });
-        }
-        break;
-    case types.DISMISS_ELEMENT:
-        switch (action.target) {
-        case targets.THREADS:
-            return Object.assign({}, prevState, {
-                threads: Object.assign({}, prevState.threads, {
-                    data: prevState.threads.data.filter((x, i) => {
-                        return i !== action.payload.index;
-                    })
-                })
-            });
-        case targets.KEYWORDS:
-            return Object.assign({}, prevState, {
-                keywords: Object.assign({}, prevState.keywords, {
-                    data: prevState.keywords.data.filter((x, i) => {
-                        return i !== action.payload.index;
-                    })
-                })
-            });
-        case targets.ARTICLES:
-            return Object.assign({}, prevState, {
-                articles: Object.assign({}, prevState.articles, {
-                    data: prevState.articles.data.filter((x, i) => {
-                        return i !== action.payload.index;
-                    })
-                })
-            });
-        case targets.QUIZZES_ADMIN:
-            return Object.assign({}, prevState, {
-                quizzes: Object.assign({}, prevState.quizzes, {
-                    data: prevState.quizzes.data.filter((x, i) => {
-                        return i !== action.payload.index;
-                    })
-                })
-            });
-        case targets.REQUESTS:
-            return Object.assign({}, prevState, {
-                writing: prevState.writing.filter((x, i) => {
-                    return i !== action.payload.index;
-                })
-            });
-        }
-        break;
+        
+        default:
+        return prevState;
+    }
     case types.PATCH_SUCCESS:
         return Object.assign({}, prevState, {
             requests: prevState.requests.map(patch => {

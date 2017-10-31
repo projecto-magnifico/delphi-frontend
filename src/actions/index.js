@@ -66,8 +66,24 @@ export const fetchQuizzesForAdmin = (query) => {
     };
 };
 
+export const fetchQuizzesByThreadId = id => {
+    return (dispatch) => {
+        dispatch(fetchRequest(targets.THREAD_QUIZZES));
+        return axios.get(`${API_URL}/threads/${id}/quizzes`)
+            .then(res => {
+                dispatch(fetchSuccess({
+                    data: res.data,
+                }, targets.THREAD_QUIZZES))
+            })
+            .catch(error => {
+                dispatch(fetchFailure(error, targets.THREAD_QUIZZES));
+            });
+    }
+}
+
 export const fetchThreadsForAdmin = (query) => {
     return (dispatch) => {
+        console.log(query)
         dispatch(fetchRequest(targets.THREADS));
         return axios.get(`${API_URL}/threads?${query}`)
             .then(res => {
@@ -80,6 +96,21 @@ export const fetchThreadsForAdmin = (query) => {
             });
     };
 };
+
+export const fetchKeywordsByThreadId = (id) => {
+    return (dispatch) => {
+        dispatch(fetchRequest(targets.THREAD_KEYWORDS));
+        return axios.get(`${API_URL}/threads/${id}/keywords`)
+            .then(res => {
+                dispatch(fetchSuccess({
+                    data: res.data,
+                }, targets.THREAD_KEYWORDS));
+            })
+            .catch(error => {
+                dispatch(fetchFailure(error, targets.THREAD_KEYWORDS));
+            });
+    }
+}
 
 export const fetchKeywordsForAdmin = (query) => {
     return (dispatch) => {
@@ -178,18 +209,18 @@ export const patchToThread = (thread_id, newData, index) => {
 };
 
 
-export const patchTagToKeyword = (keyword_id, tag, index) => {
+export const patchTagToKeyword = (keyword_id, tag_id, index) => {
     return (dispatch) => {
         const url = `${API_URL}/keywords/${keyword_id}`;
-        dispatch(patchRequest(targets.KEYWORDS, index));
-        return axios.patch(url, { tag })
+        dispatch(patchRequest(url, targets.KEYWORDS, index));
+        return axios.patch(url, { tag_id })
             .then(res => {
                 dispatch(patchSuccess({
                     data: res.data,
                 }, url, targets.KEYWORDS, index));
             })
             .catch(error => {
-                dispatch(patchFailure(error, url, tag, targets.KEYWORDS, index));
+                dispatch(patchFailure(error, url, tag_id, targets.KEYWORDS, index));
             });
     };
 };

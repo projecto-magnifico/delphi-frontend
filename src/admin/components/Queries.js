@@ -1,5 +1,4 @@
 import React from 'react';
-import PT from 'prop-types';
 import QueryKeywords from './QueryKeywords';
 import QueryThreads from './QueryThreads';
 import QueryQuizzes from './QueryQuizzes';
@@ -15,10 +14,6 @@ class Queries extends React.Component {
         );
     }
 
-
-    static propTypes = {
-    
-    }
 }
 
 

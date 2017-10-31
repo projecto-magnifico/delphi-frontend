@@ -1,18 +1,22 @@
 GET /threads
-Returns the threads with the highest score, with related articles and keywords
+Returns the threads with the highest score
 Queries: 
     ?count=1+       return this number of top stories, defaults to 10
     ?unnamed=true   returns only stories with an empty name property
     ?summary=null   returns only stories with no summary written
     ?summary=due    returns only stories with no summary or one over three days old
 
-GET /threads/id
-Returns score, articles and keywords for given thread_id
+GET /threads/:id
+Returns thread details for given thread_id
 
-PATCH /threads/id
-Update details - commonly name - of the thread id
+GET /threads/:id/articles
+GET /threads/:id/keywords
+Returns articles/keywords for given thread_id
 
-POST /threads/id/articles
+PATCH /threads/:id
+Update details - commonly name and summary - of the thread id
+
+POST /threads/:id/articles
 Add an article to a thread
 
 GET /keywords
@@ -23,12 +27,12 @@ Queries
     ?argument=top           ...this many from the most relevant keywords
     ?argument=important     ...from this many top threads
 
-GET /keywords/id
+GET /keywords/:id
 Returns the keyword with the given id
 Queries
     ?duplicates=true    returns all identical keywords and their collective score
 
-PATCH /keywords/id
+PATCH /keywords/:id
 Update details - commonly tag - of the keyword id.
 
 GET /quizzes
@@ -41,7 +45,7 @@ Queries:
     ?restriction=closed     with closed status (past closing date)
     ?restriction=revisit    marked for revisiting up to one day ahead
 
-GET /quizzes/id
+GET /quizzes/:id
 Return the quiz with the given quiz_id
 
 POST /tags
