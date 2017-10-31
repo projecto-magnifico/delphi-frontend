@@ -7,10 +7,13 @@ class Prediction extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalActive : false
+            modalActive : false,
+            userPrediction : ""
         }
         this.displayInfo = this.displayInfo.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
 
     displayInfo () {
      
@@ -42,7 +45,7 @@ class Prediction extends React.Component {
                     <Label>What happens next...</Label>
                     <Control>
                         <div className="predictionText">
-                            <TextArea  placeholder={'Prediction here'} />
+                            <TextArea onChange={this.handleChange} value={this.state.userPrediction} id="userPrediction" placeholder={'Prediction here'} />
                         </div>    
                     </Control>
                 <Button onClick={this.props.showAnswerOptions}>Check prediction</Button>
@@ -50,7 +53,14 @@ class Prediction extends React.Component {
             </div>
         )
     }
-
+    handleChange(event) {
+        // console.log("hi");
+        // console.log(event.target.value);
+        const newStr = event.target.value;
+        this.setState({
+            userPrediction: newStr
+        })
+    }
 }
 
 export default Prediction

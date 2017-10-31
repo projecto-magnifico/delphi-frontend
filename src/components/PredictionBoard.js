@@ -3,23 +3,33 @@ import Prediction from './Prediction.js'
 import AnswerGroups from './AnswerGroups.js'
 import {Box, Button} from 'bloomer';
 import findSuggestions from '../logic/suggestionLogic.js'
+import _ from 'underscore';
 
 const quiz = {
 
-    answerOptions: ["Mariano Rajoy will regisn as prime-minister","Spanish government will block Catalonian independence"]
+    answerOptions: ["",""]
+}
+
+const quizAdmin = {
+
+   answerOptions : ["Mariano Rajoy will resign as prime-minister","Spanish government will block Catalonian independence","Catalonia and Spain will enter a civil war",
+                    "Catalonia will join together with Spain","Catalonia will become independent from Spain"]
 }
 
 class PredictionBoard extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            checking: false
+            checking: true
         }
-        this.showAnswerOptions = this.showAnswerOptions.bind(this);
+        this.showAnswerOptions = this.showAnswerOptions.bind(this); 
     }
 
     showAnswerOptions () {
 
+        const userPrediction = document.getElementById("userPrediction").value;
+        const newSuggestions = _.pluck(findSuggestions(quizAdmin.answerOptions,userPrediction),"target");
+        quiz.answerOptions = newSuggestions
         const newChecking = !this.state.checking;
         this.setState({
             checking: newChecking
