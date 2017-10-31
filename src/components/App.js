@@ -11,12 +11,14 @@ import 'bulma/css/bulma.css'
 import 'font-awesome/css/font-awesome.min.css';
 
 
+
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
             earthWidth : 700,
             earthHeight : 500,
+            currentUser: "Mitchell"
         }
     }
     render() {
@@ -38,7 +40,7 @@ class App extends Component {
                                                 <BreakingNews />
                                             </div>
                                             <div className="All">
-                                                <PredictionBoard />
+                                                <PredictionBoard currentUser={this.state.currentUser} />
                                             </div>
                                         </div>
                                     )

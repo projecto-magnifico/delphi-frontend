@@ -11,9 +11,9 @@ class AnswerGroups extends React.Component {
         return (
             <div>
                 <div id="answerGroups" className="tile is-parent tile uk-card-hover uk-card-default">
-                    {this.props.answerOptions.map(answerOption => {
+                    {this.props.answerOptions.map((answerOption,i) => {
                         return (
-                           <Box className="tile answerGroup uk-card-default" >
+                           <Box onClick={this.props.submitQuiz} key={i} className="tile answerGroup uk-card-default" >
                         <h2>Did you mean...</h2>
                         <h3>{answerOption}</h3>
                             </Box>
