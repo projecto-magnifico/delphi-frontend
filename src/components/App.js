@@ -14,10 +14,32 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            earthWidth : 800,
-            earthHeight : 600
+            earthWidth : 1200,
+            earthHeight : 1000,
+            earthStatus: 1
+        }
+        this.renderAlternativeView = this.renderAlternativeView.bind(this);
+    }
+
+    renderAlternativeView(event) {
+        event.preventDefault();
+        if(this.state.earthStatus === 1) {
+            this.setState({
+                earthWidth: 1200,
+                earthHeight: 1000,
+                earthStatus: 0
+            })
+        }
+
+        if(this.state.earthStatus === 0) {
+            this.setState({
+                earthWidth: 1000,
+                earthHeight: 800,
+                earthStatus: 1
+            })
         }
     }
+
     render() {
         return (
             <BrowserRouter>
@@ -26,15 +48,29 @@ class App extends Component {
                                     exact path="/"
                                     render={() =>
                                     (
-                                        <div>  
-                                            <div className='tile is-parent is-12 view'>
+                                        <div> 
+                                            {this.state.earthStatus === 0 ? 
+                                            <div className='tile is-parent is-12 view uk-animation-fade'>
+                                                <Earth
+                                                width={this.state.earthWidth}
+                                                height={this.state.earthHeight}
+                                                />
+                                                <BreakingNews />
+                                            </div>
+                                                :
+                                                
+                                            <div className='tile is-parent is-12 view '>
                                                     <Earth
-                                                        width={this.state.earthWidth}
-                                                        height={this.state.earthHeight}
+                                                        width={this.state.earthWidth * 0.8}
+                                                        height={this.state.earthHeight * 0.8}
                                                     />
-                                                     <ThreadCard />                                               
+                                                     <ThreadCard 
+                                                     renderAlternativeView={this.renderAlternativeView}
+                                                     earthStatus={this.state.earthStatus}
+                                                     />                                               
                                                     <BreakingNews />
                                             </div>
+                                                } 
                                         </div>
                                     )
                                     }

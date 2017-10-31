@@ -9,6 +9,7 @@ class Earth extends React.Component {
     constructor(props) {
         super(props)
     }
+
     componentDidMount() {
         const{width, height} = this.props
         const Scene = new three.Scene()
@@ -32,8 +33,8 @@ class Earth extends React.Component {
             map: Loader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/79000/79765/dnb_land_ocean_ice.2012.3600x1800.jpg'),
 
             specularMap: Loader.load('http://blog.apoapsys.com/assets/melted-ice/melted-ice-specular-4096x2048.jpg'),
-            bumpMap: Loader.load('http://www.cgl.uwaterloo.ca/ecdfourq/courses/cs688/images/bumpearthTexture.jpg'),
-            bumpScale: 1,
+            // bumpMap: Loader.load('http://naturalearth.springercarto.com/ne3_data/16200/elev_bump_16k.jpg'),
+            // bumpScale: 0.5,
             metalness: 0.0,
             roughness: 1.0
         })
@@ -57,8 +58,8 @@ class Earth extends React.Component {
         Scene.background = new three.Color('white')
 
         const Canvas = document.getElementById('openData');
-        Canvas.width = this.props.width;
-        Canvas.height = this.props.height;
+        Canvas.width = 800;
+        Canvas.height = 600;
         const CanvassMaterial = new three.MeshBasicMaterial()
         CanvassMaterial.map = new three.CanvasTexture(Canvas)
         CanvassMaterial.transparent = true
@@ -68,11 +69,7 @@ class Earth extends React.Component {
         
         const context = Canvas.getContext('2d');    
         function addDataPoint (long, lat) {
-            // var img1 = new Image();
-            // img1.onload = function () {
-            //     context.drawImage(img1, long, lat, 100, 100)
-            // }
-            // img1.src = locIcon;
+
             context.beginPath();
             context.arc(long,lat,2,0,2*Math.PI)
 
@@ -89,7 +86,7 @@ class Earth extends React.Component {
             context.stroke();
         }
 
-        addDataPoint(486,113);
+        addDataPoint(483,114);
         addDataPoint(230,180);
         addDataPoint(530,353)
          
@@ -116,7 +113,7 @@ class Earth extends React.Component {
             padding: '0px'
         }
         return (
-            <div className ='tile earth'>
+            <div onClick={this.props.renderAlternativeView} className ='tile earth'>
                 <div ref="anchor" style={style}>
                 </div>
                 <canvas style={{display: 'none'}}id="openData"></canvas>
