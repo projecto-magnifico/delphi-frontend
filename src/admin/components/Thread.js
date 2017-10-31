@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { fetchArticlesForAdmin, fetchKeywordsByThreadId, patchToThread, fetchQuizzesByThreadId } from '../../actions';
 import * as targets from '../../actions/targets';
 import AdminButton from './AdminButton';
-import AdminKeywordList from './AdminKeywordList';
-import ThreadArticles from './ThreadArticles';
 import ThreadImage from './ThreadImage';
 import ThreadSummary from './ThreadSummary';
 import AdminButtonIcon from './AdminButtonIcon';
 import ThreadName from './ThreadName';
+import ThreadArticleContainer from './ThreadArticleContainer';
+import ThreadKeywordContainer from './ThreadKeywordContainer';
+import ThreadQuizzesContainer from './ThreadQuizzesContainer';
+import Quiz from './Quiz';
 
 const testArticles = {
     loading: true,
@@ -34,34 +36,18 @@ class Thread extends React.Component {
         super(props);
         this.state = {
             hidden: false,
-            threadQuizzes: []
         }
-        this.handleHideClick = this.handleHideClick.bind(this);
+        this.handleToggleThreadClick = this.handleToggleThreadClick.bind(this);
         this.handleLoadArticlesClick = this.handleLoadArticlesClick.bind(this);
         this.handleLoadKeywordsClick = this.handleLoadKeywordsClick.bind(this);
-        this.updateQuizzes = this.updateQuizzes.bind(this);
-    }
-
-    componentDidMount () {
-        fetchQuizzesByThreadId(this.props.thread.threadId);
-    }
-
-    componentWillReceiveProps (newProps) {
-        this.updateQuizzes(newProps.threadQuizzes);
-    }
-
-    updateQuizzes (newQuizzes) {
-        this.setState({
-            threadQuizzes : newQuizzes
-        })
     }
 
     render() {
         const { thread, articles, threadKeywords, tags, patchToThread } = this.props;
-        const { hidden } = this.state;
+        const { hidden, quizzes } = this.state;
         return (
             <div>
-                {hidden && <div className="box">
+                {!hidden && <div className="box">
                     <div className="columns">
                         <div className="column is-three-fifths">
                             <label className="label">Name:</label>
@@ -78,11 +64,11 @@ class Thread extends React.Component {
                                 <p className="label">
                                     Summary last updated:
                                 </p>
-                                <p>{this.props.thread.lastUpdated}</p>
+                                <p>{thread.lastUpdated}</p>
                                 <p className="label">
                                     Thread created:
                                 </p>
-                                <p>{this.props.thread.dateCreated}</p>
+                                <p>{thread.dateCreated}</p>
                             </div>
                         </div>
                         <div className="column">
@@ -93,7 +79,7 @@ class Thread extends React.Component {
                                 <div className="control column">
                                     <AdminButtonIcon
                                         iconRef="fa fa-2x fa-minus-circle"
-                                        btnFunction={this.handleHideClick}
+                                        btnFunction={this.handleToggleThreadClick}
                                     />
                                 </div>
                             </div>
@@ -120,27 +106,18 @@ class Thread extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {articles.loading && <p><strong>Articles loading...</strong></p>}
-                    {articles.error && <p><strong>Error fetching articles...</strong></p>}
-                    {articles.data.length > 0 &&
-                        <ThreadArticles
-                            articles={articles.data}
-                        />
-                    }
-                    {threadKeywords.loading && <p><strong>Keywords loading...</strong></p>}
-                    {threadKeywords.error && <p><strong>Error fetching keywords...</strong></p>}
-                    {threadKeywords.data.length > 0 &&
-                        <AdminKeywordList
-                            keywords={threadKeywords.data}
-                            tags={tags}
-                        />
-                    }
+                    <ThreadArticleContainer
+                        articles={articles}
+                    />
+                    <ThreadKeywordContainer
+                        keywords={threadKeywords}
+                    />
                 </div>}
-                {!hidden && <div className="box">
+                {hidden && <div className="box">
                     <p>{thread.name ? thread.name : "No name yet..."}</p>
                     <AdminButtonIcon
-                        iconRef="fa fa-2x fa-minus-circle"
-                        btnFunction={this.handleHideClick}
+                        iconRef="fa fa-2x fa-plus-circle"
+                        btnFunction={this.handleToggleThreadClick}
                     />
                 </div>}
             </div>
@@ -159,7 +136,7 @@ class Thread extends React.Component {
         fetchKeywordsByThreadId(thread.threadId);
     }
 
-    handleHideClick(e) {
+    handleToggleThreadClick(e) {
         e.preventDefault();
         const { hidden } = this.state;
         this.setState({

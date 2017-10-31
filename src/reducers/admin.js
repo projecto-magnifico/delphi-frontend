@@ -113,9 +113,8 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-
         default:
-        return prevState;
+            return prevState;
     }
     case types.FETCH_SUCCESS:
         switch (action.target) {
@@ -167,7 +166,6 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: action.payload.data
                 })
             });
-        
         default:
             return prevState;
     }
@@ -221,9 +219,8 @@ export default (prevState = getInitialAdminState(), action) => {
                     data: []
                 })
             });
-        
         default:
-        return prevState;
+            return prevState;
     }
     case types.PATCH_SUCCESS:
         return Object.assign({}, prevState, {

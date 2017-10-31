@@ -13,8 +13,9 @@ GET /threads/:id/articles
 GET /threads/:id/keywords
 Returns articles/keywords for given thread_id
 
-PATCH /threads/:id
-Update details - commonly name and summary - of the thread id
+PATCH /threads/:id/name
+Update details - commonly name and summary - of the thread id.
+When patching the summary, the summary_updated column should also change to current timestamp.
 
 POST /threads/:id/articles
 Add an article to a thread
