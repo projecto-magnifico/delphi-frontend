@@ -4,6 +4,7 @@ import BreakingNews from './BreakingNews'
 import Earth from './Earth';
 import AdminHome from '../admin/components/AdminHome';
 import ThreadCard from './ThreadCard.js';
+import PredictionBoard from './PredictionBoard.js'
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
 import './css/App.css'
@@ -78,6 +79,7 @@ class App extends Component {
                                                      earthStatus={this.state.earthStatus}
                                                      />                                               
                                                     <BreakingNews />
+                                                    <PredictionBoard />
                                             </div>
                                                 } 
                                         </div>
