@@ -8,12 +8,17 @@ import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
 import './css/App.css'
 import 'bulma/css/bulma.css'
+import 'font-awesome/css/font-awesome.min.css';
+
+
 
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
+
+            currentUser: "Mitchell",
             earthWidth : 1200,
             earthHeight : 1000,
             earthStatus: 1
@@ -43,14 +48,18 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                    <div className="App">
+                    <div className="All">
                                 <Route
                                     exact path="/"
                                     render={() =>
                                     (
+
+            
+
                                         <div> 
                                             {this.state.earthStatus === 0 ? 
                                             <div className='tile is-parent is-12 view uk-animation-fade'>
+
                                                 <Earth
                                                 width={this.state.earthWidth}
                                                 height={this.state.earthHeight}
