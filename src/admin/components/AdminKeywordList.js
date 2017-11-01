@@ -122,7 +122,7 @@ class AdminKeywordList extends React.Component {
 
     static propTypes = {
         keywords : PT.array.isRequired,
-        tags : PT.array.isRequired
+        tags : PT.object.isRequired
     }
 }
 

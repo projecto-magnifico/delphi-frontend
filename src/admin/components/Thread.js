@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchArticlesForAdmin, fetchKeywordsByThreadId, patchToThread, fetchQuizzesByThreadId } from '../../actions';
+import { fetchArticlesForAdmin, fetchKeywordsByThreadId, patchToThread } from '../../actions';
 import * as targets from '../../actions/targets';
 import AdminButton from './AdminButton';
 import ThreadImage from './ThreadImage';
@@ -98,11 +98,6 @@ class Thread extends React.Component {
                                     btnFunction={this.handleLoadKeywordsClick}
                                     btnText="Load Keywords"
                                 />
-                                <AdminButton
-                                    classText="button is-primary is-fullwidth"
-                                    btnFunction={this.handleQuizzesClick}
-                                    btnText="Create Quiz"
-                                />
                             </div>
                         </div>
                     </div>
@@ -111,6 +106,9 @@ class Thread extends React.Component {
                     />
                     <ThreadKeywordContainer
                         keywords={threadKeywords}
+                    />
+                    <ThreadQuizzesContainer
+                        thread={thread}
                     />
                 </div>}
                 {hidden && <div className="box">
@@ -173,9 +171,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         fetchKeywordsByThreadId: (threadId) => {
             dispatch(fetchKeywordsByThreadId(threadId));
-        },
-        fetchQuizzesByThreadId: (threadId) => {
-            dispatch(fetchQuizzesByThreadId(threadId));
         }
     }
 }

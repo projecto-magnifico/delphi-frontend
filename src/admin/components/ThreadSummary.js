@@ -23,7 +23,7 @@ class ThreadSummary extends React.Component {
         return (
             <div className="control">
                 {useSummary.map((summaryItem, i) => {
-                    return (editingIndex === i) ?
+                    return editingIndex === i ?
                         <input
                             key={i}
                             className="input"
@@ -41,7 +41,7 @@ class ThreadSummary extends React.Component {
                             onDoubleClick={this.handleSummaryDoubleClick}
                             data-index={i}
                         >
-                            {`${i+1}: ${summary[i] ? summary[i] : 'Double click to input'}`}
+                            {`${i+1}: ${summary[i] ? summary[i] : 'dblClick to input'}`}
                         </p>
                 })}
             </div>
