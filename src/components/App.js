@@ -20,8 +20,8 @@ class App extends Component {
         this.state = {
 
             currentUser: "Mitchell",
-            earthWidth : 1200,
-            earthHeight : 1000,
+            earthWidth : 1100,
+            earthHeight : 900,
             earthStatus: 1
         }
         this.renderAlternativeView = this.renderAlternativeView.bind(this);
@@ -31,8 +31,8 @@ class App extends Component {
         event.preventDefault();
         if(this.state.earthStatus === 1) {
             this.setState({
-                earthWidth: 1200,
-                earthHeight: 1000,
+                earthWidth: 1000,
+                earthHeight: 800,
                 earthStatus: 0
             })
         }
@@ -49,7 +49,7 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                    <div className="All">
+                    <div>
                                 <Route
                                     exact path="/"
                                     render={() =>
@@ -68,8 +68,8 @@ class App extends Component {
                                                 <BreakingNews />
                                             </div>
                                                 :
-                                                
-                                            <div className='tile is-parent is-12 view '>
+                                                <div>
+                                            <div className='tile is-parent is-12 view'>
                                                     <Earth
                                                         width={this.state.earthWidth * 0.8}
                                                         height={this.state.earthHeight * 0.8}
@@ -77,9 +77,13 @@ class App extends Component {
                                                      <ThreadCard 
                                                      renderAlternativeView={this.renderAlternativeView}
                                                      earthStatus={this.state.earthStatus}
-                                                     />                                               
+                                                     />
+                                                   
                                                     <BreakingNews />
-                                                    <PredictionBoard />
+                                            </div >
+                                                <div className ='All'>
+                                                        <PredictionBoard />
+                                                </div>
                                             </div>
                                                 } 
                                         </div>

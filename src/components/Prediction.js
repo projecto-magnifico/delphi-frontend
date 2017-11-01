@@ -26,7 +26,7 @@ class Prediction extends React.Component {
     render() {
 
         return (
-            <div className="tile All">
+            <div className="tile predictionCard">
                 <i onClick={this.displayInfo} className="fa fa-info-circle" aria-hidden="true"></i>
                 <Modal id="predictionInfo" isActive={this.state.modalActive}>
                     <ModalBackground />

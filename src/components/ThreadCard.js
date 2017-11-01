@@ -29,7 +29,7 @@ class ThreadCard extends React.Component {
 
     render() {
         return (    
-                <Box id='threadCard' className="tile is-3 uk-card-default uk-card-hover">
+                <Box id='threadCard' className="tile uk-card-default uk-card-hover">
                     <div className='uk-card'>
                     <i id = 'compress' onClick={this.props.renderAlternativeView} className="fa fa-compress" aria-hidden="true"></i>
                         <i id = 'right' onClick={this.changePage2} className="fa fa-angle-right" aria-hidden="true"></i>

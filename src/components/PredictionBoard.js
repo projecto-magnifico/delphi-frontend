@@ -52,8 +52,9 @@ class PredictionBoard extends React.Component {
 
     render () {
         return (
-            <div>
-                {this.state.submitted ? <div id="submittedView" className="level"> 
+            <div id='outerDiv'>
+                {this.state.submitted ? 
+                <div id="submittedView" className="level"> 
                             <div id="submittedPrediction"  >
                                 <UserPrediction name={this.props.currentUser} prediction={document.getElementById("userPrediction").value}></UserPrediction>                        
                             </div>
@@ -61,23 +62,39 @@ class PredictionBoard extends React.Component {
                                 <PredictionCarousel></PredictionCarousel>
                             </div>
                     </div> 
-                :            
-                <Box id="predictionBoard" className="tile uk-card-hover uk-card-default">
-                    <Box id="predictionSection">
-                <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
-                    <h1>How will the Spanish election impact the Catalonian referendum?</h1>
-                    <h6>This quiz will expire in 48 hours</h6>
-                </Box>
-                <div className="predictionBody">
-                    <Prediction showAnswerOptions = {this.showAnswerOptions} />
-                </div>
+                : 
+                
+                <div>
+                    {this.state.checking ?
+                    <Box id="predictionBoard" className='uk-card uk-card-default uk-card-hover'>
+                        <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
+                            <h1>How will the Spanish election impact the Catalonian referendum?</h1>
+                            <h6><i className="fa fa-clock-o" aria-hidden="true"></i> 48 Hours</h6>
+                        </Box>
+                        <div className="predictionBody">
+                            <Prediction showAnswerOptions = {this.showAnswerOptions} />
+                        </div>
+                        </Box>
+                    :
+                    <Box id='predictionBoard' className='uk-card uk-card-default uk-card-hover' style={{display: 'block'}}>
+                        <div id='innerdiv' style={{display: 'inline-flex'}}>
+                            <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
+                                <h1>How will the Spanish election impact the Catalonian referendum?</h1>
+                                <h6>This quiz will expire in 48 hours</h6>
+                            </Box>
+                        <div className="predictionBody">
+                            <Prediction showAnswerOptions = {this.showAnswerOptions} />
+                        </div>
+                        </div>
+                        <div className="answerGroups">
+                            <AnswerGroups answerOptions={quiz.answerOptions} submitQuiz={this.submitQuiz} />
+                        </div>
                     </Box>
-                {this.state.checking ? <div></div> :
-                    <div className="answerGroups">
-                        <AnswerGroups answerOptions={quiz.answerOptions} submitQuiz={this.submitQuiz} />
-                    </div>}
-                </Box>}
+                    }
+                    </div>
+                }
             </div>
+
         )
     }
 }
