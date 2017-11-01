@@ -3,26 +3,76 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import BreakingNews from './BreakingNews'
 import Earth from './Earth';
 import AdminHome from '../admin/components/AdminHome';
+import ThreadCard from './ThreadCard.js';
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
+import './css/App.css'
+import 'bulma/css/bulma.css'
+
 
 class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            earthWidth : 1200,
+            earthHeight : 1000,
+            earthStatus: 1
+        }
+        this.renderAlternativeView = this.renderAlternativeView.bind(this);
+    }
+
+    renderAlternativeView(event) {
+        event.preventDefault();
+        if(this.state.earthStatus === 1) {
+            this.setState({
+                earthWidth: 1200,
+                earthHeight: 1000,
+                earthStatus: 0
+            })
+        }
+
+        if(this.state.earthStatus === 0) {
+            this.setState({
+                earthWidth: 1000,
+                earthHeight: 800,
+                earthStatus: 1
+            })
+        }
+    }
+
     render() {
         return (
             <BrowserRouter>
-                <div>
                     <div className="App">
-                        <header className="App-header">
-                        </header>
-                        <div uk-grid="true">
-                            <div className='uk-align-left'>
                                 <Route
                                     exact path="/"
                                     render={() =>
-                                        <Earth
-                                            width={1200}
-                                            height={1000}
-                                        />
+                                    (
+                                        <div> 
+                                            {this.state.earthStatus === 0 ? 
+                                            <div className='tile is-parent is-12 view uk-animation-fade'>
+                                                <Earth
+                                                width={this.state.earthWidth}
+                                                height={this.state.earthHeight}
+                                                />
+                                                <BreakingNews />
+                                            </div>
+                                                :
+                                                
+                                            <div className='tile is-parent is-12 view '>
+                                                    <Earth
+                                                        width={this.state.earthWidth * 0.8}
+                                                        height={this.state.earthHeight * 0.8}
+                                                    />
+                                                     <ThreadCard 
+                                                     renderAlternativeView={this.renderAlternativeView}
+                                                     earthStatus={this.state.earthStatus}
+                                                     />                                               
+                                                    <BreakingNews />
+                                            </div>
+                                                } 
+                                        </div>
+                                    )
                                     }
                                 />
                                 <Route
@@ -34,19 +84,6 @@ class App extends Component {
                                     }
                                 />
                             </div>
-                            <div className='uk-align-right uk-width-1-4'>
-                                <Route
-                                    exact path="/"
-                                    render={() =>
-                                        <BreakingNews />
-                                    }
-                                />
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
             </BrowserRouter>
         );
     }
