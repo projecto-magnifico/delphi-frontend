@@ -163,3 +163,111 @@
     background-color: lightblue;
     height: 100px;
 }
+
+.tile {
+    
+        height: 290px;
+        display: block;
+        width: 1400px;
+    
+    }
+    
+    #CurrentQuestion {
+      
+        height: 80px;
+        display: block;
+        width: 450px;
+    
+    }
+    
+    .tile.earth {
+        margin-top: 80px;
+        width: 80%;
+    }
+    
+    .tile.view {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+    }
+    
+    #threadCard {
+        margin-left: 10px;
+        padding: 10px;
+        margin-right: 30px;
+        margin-top: 50px;
+    }
+    
+    #threadImg {
+        margin-top:-5px;
+        border-radius: 25px;
+        padding-bottom: 10px;
+        margin-bottom: 10px
+        
+    }
+    
+    #threadCard h1 {
+        font-size: 20px;
+    }
+    
+    #threadCard ul {
+        margin-bottom: 15px
+    }
+    
+    #threadCard i {
+        float: right;
+        margin: 5px;
+        height: 25px;
+        width: 25px;
+    }
+    
+    #page1 {
+        padding-top: 15px;
+    }
+    
+    #page1 ul:before {
+        margin-top: 90px;
+        content: '';
+        position: absolute;
+        top: 0;
+        left:0;
+        width: 2px;
+        height:80%;
+        border: 1px solid #1e87f0;
+    }
+    
+    #page1 h1 {
+        margin-top:0px;
+        margin-bottom: 10px;
+    }
+    
+    #page1 ul li {
+        margin-left: 30px;
+        margin-top: 40px;
+        position: relative;
+    }
+    
+    #page1 ul li span {
+        content: '';
+        position: absolute;
+        top: 0;
+        left:-70px;
+        width: 2px;
+        height: 100%;
+        border: 1px solid #1e87f0;
+    } 
+    
+    #page1 ul li span:before {
+    content:'';
+    width: 15px;
+    height: 15px;
+    border: 2px solid #1e87f0;
+    position: absolute;
+    border-radius: 50%;
+    background: #1e87f0;
+    }
+    
+    #page1 ul li span:before {
+        left: -7px;
+        top: 25px;
+    }
