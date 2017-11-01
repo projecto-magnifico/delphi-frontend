@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import BreakingNews from './BreakingNews'
 import Earth from './Earth';
 import AdminHome from '../admin/components/AdminHome';
-import ThreadCard from './ThreadCard.js'
+import ThreadCard from './ThreadCard.js';
 import 'uikit/dist/css/uikit.css';
 import 'uikit/dist/js/uikit.js';
 import './css/App.css'

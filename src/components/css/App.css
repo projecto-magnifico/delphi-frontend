@@ -1,10 +1,4 @@
 
-#predictions {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 50px;
-}
-
 .tile {
 
     height: 290px;
@@ -21,14 +15,6 @@
 
 }
 
-#PredictionBody {
-  
-    height: 170px;
-    display: block;
-    width: 450px;
-
-}
-
 .tile.earth {
     margin-top: 80px;
     width: 80%;
@@ -37,6 +23,7 @@
 .tile.view {
     margin: 0px;
     padding: 0px;
+    display: inline-block;
 }
 
 #threadCard {

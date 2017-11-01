@@ -1,5 +1,6 @@
 import React from 'react'
 import NewsCard from './NewsCard'
+import Particles from 'react-particles-js';
 
 class NewsFeed extends React.Component {
     constructor(props){
