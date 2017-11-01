@@ -67,24 +67,26 @@ class App extends Component {
                                                 />
                                                 <BreakingNews />
                                             </div>
+
                                                 :
-                                                <div>
-                                            <div className='tile is-parent is-12 view'>
-                                                    <Earth
+
+                                               <div>
+                                            <div className='tile is-12'>
+                                                    <Earth className="tile is-child"
                                                         width={this.state.earthWidth * 0.8}
                                                         height={this.state.earthHeight * 0.8}
                                                     />
-                                                     <ThreadCard 
+                                                     <ThreadCard className="tile is-child"
                                                      renderAlternativeView={this.renderAlternativeView}
                                                      earthStatus={this.state.earthStatus}
                                                      />
-                                                   
-                                                    <BreakingNews />
+                                                <BreakingNews />
                                             </div >
-                                                <div className ='All'>
+                                            <div className ='All'>
                                                         <PredictionBoard />
-                                                </div>
                                             </div>
+                                            </div>
+                                          
                                                 } 
                                         </div>
                                     )
