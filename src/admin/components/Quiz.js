@@ -1,6 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
-
+import {patchQuiz} from '../../actions'
+import {connect} from 'react-redux';
 
 class Quiz extends React.Component {
     constructor (props) {
@@ -9,8 +10,17 @@ class Quiz extends React.Component {
             editingQuestion : false,
             question : '',
             editingAnswerIndex : -1,
-            answers : [],
+            answers : []
         }
+
+        this.handleAddAnswerDoubleClick = this.handleAddAnswerDoubleClick.bind(this);
+        this.handleAnswerChange = this.handleAnswerChange.bind(this);
+        this.handleAnswerDoubleClick = this.handleAnswerDoubleClick.bind(this);
+        this.handleAnswerKeyDown = this.handleAnswerKeyDown.bind(this);
+        this.handleQuestionChange = this.handleQuestionChange.bind(this);
+        this.handleQuestionDoubleClick = this.handleQuestionDoubleClick.bind(this);
+        this.handleQuestionKeyDown = this.handleQuestionKeyDown.bind(this);
+        this.handleSubmissionClick = this.handleSubmissionClick.bind(this);
     }
 
     render () {
@@ -23,7 +33,7 @@ class Quiz extends React.Component {
                 {!editingQuestion && 
                     <h2 
                         className="title"
-                        onDoubleClick={this.handleQuizDoubleClick}
+                        onDoubleClick={this.handleQuestionDoubleClick}
                     >
                         {quiz.question}
                     </h2>
@@ -78,10 +88,12 @@ class Quiz extends React.Component {
                                 </tr>
                             ;
                         })}
-                        <tr
-                            onDoubleClick={this.handleAddAnswerDoubleClick}
-                        >
-                        Add new answer
+                        <tr>
+                            <td
+                                onDoubleClick={this.handleAddAnswerDoubleClick}
+                            >
+                                <p>Add new answer</p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,9 +134,12 @@ class Quiz extends React.Component {
 
     handleAnswerDoubleClick (e) {
         e.preventDefault();
-        this.setState({
-            editingAnswerIndex : e.target.dataset.index
-        })
+        const {quiz} = this.props;
+        if (!quiz.flagNew) {
+            this.setState({
+                editingAnswerIndex : e.target.dataset.index
+            })
+        }
     }
 
     handleAnswerChange (e) {
@@ -150,16 +165,25 @@ class Quiz extends React.Component {
 
     handleAddAnswerDoubleClick (e) {
         e.preventDefault();
-        const {answers} = this.state;
-        const newIndex = answers.length;
-        this.setState({
-            answers : answers.concat(''),
-            editingAnswerIndex : newIndex
-        })
+        const {quiz} = this.props;
+        if (!quiz.flagNew) {
+            const {answers} = this.state;
+            const newIndex = answers.length;
+            this.setState({
+                answers : answers.concat(''),
+                editingAnswerIndex : newIndex
+            })
+        }
     }
 
     handleSubmissionClick (e) {
-        //patch Quiz
+        const {question, answers} = this.state;
+        const {quiz} = this.props;
+        e.preventDefault();
+        const patchQuizData = {};
+        if (question !== quiz.question) patchQuizData.question = question;
+        patchQuizData.answers = answers;
+        patchQuiz(this.props.quiz.quizId, patchQuizData)
     }
 
     static propTypes = {
@@ -168,5 +192,11 @@ class Quiz extends React.Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    patchQuiz : (id, newData) => {
+        dispatch(patchQuiz(id, newData));
+    }
+})
 
-export default Quiz;
+
+export default connect(null, mapDispatchToProps)(Quiz);

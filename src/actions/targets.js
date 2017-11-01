@@ -7,3 +7,4 @@ export const THREAD_QUIZZES = 'THREAD_QUIZZES';
 export const KEYWORDS = 'KEYWORDS';
 export const ARTICLES = 'ARTICLES';
 export const REQUESTS = 'REQUESTS';
+export const TAGS = 'TAGS';

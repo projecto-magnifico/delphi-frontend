@@ -1,6 +1,8 @@
 import React from 'react';
 import PT from 'prop-types';
+import {connect} from 'react-redux';
 import AdminButton from './AdminButton';
+import {postNewQuiz} from '../../actions';
 
 class NewQuiz extends React.Component {
     constructor (props) {
@@ -128,8 +130,9 @@ class NewQuiz extends React.Component {
     }
 
     handleSubmissionClick (e) {
+        e.preventDefault();
         const {question, closingInterval, state, answers} = this.state;
-        const {addQuizToLocalState, thread} = this.props;
+        const {informQuizPosted, thread} = this.props;
         const date = 0;
         //TODO - SORT OUT DATE! ALEX!
         // date = new Date();
@@ -142,13 +145,15 @@ class NewQuiz extends React.Component {
             threadId : thread ? thread.threadId : 0,
             state : state,
             revisitDate : date,
+            flagNew : true,
             dateCreated : new Date().getDate(),
             answers : answers.map(answer => ({
                 proto: answer,
                 votes : 0
             }))
         }
-        addQuizToLocalState(quiz);
+        informQuizPosted(quiz);
+        postNewQuiz(quiz);
     }
 
     handleAnswerChange (e) {
@@ -195,9 +200,15 @@ class NewQuiz extends React.Component {
 
     static propTypes = {
         thread : PT.object.isRequired,
-        addQuizToLocalState : PT.func.isRequired
+        informQuizPosted : PT.func.isRequired
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    postNewQuiz : quiz => {
+        dispatch(postNewQuiz(quiz));
+    }
+})
 
-export default NewQuiz;
+
+export default connect(null, mapDispatchToProps)(NewQuiz);

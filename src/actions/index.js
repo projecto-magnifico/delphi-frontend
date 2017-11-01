@@ -225,6 +225,22 @@ export const patchTagToKeyword = (keyword_id, tag_id, index) => {
     };
 };
 
+export const patchQuiz = (id, newData, index) => {
+    return dispatch => {
+        const url = `${API_URL}/quizzes/${id}`;
+        dispatch(patchRequest(url, targets.QUIZZES, index));
+        return axios.patch(url, newData)
+            .then(res => {
+                dispatch(patchSuccess({
+                    data: res.data,
+                }, url, targets.QUIZZES, index))
+            })
+            .catch(error => {
+                dispatch(patchFailure(error, url, newData, targets.QUIZZES, index));
+            })
+    }
+}
+
 
 export const postRequest = (url, target) => ({
     type: types.POST_REQUEST,
@@ -262,15 +278,15 @@ export const postResend = (url, message, target) => {
 export const postNewTag = tag => {
     return (dispatch) => {
         const url = `${API_URL}/tags`;
-        dispatch(postRequest(url));
-        return axios.post(url, { tag })
+        dispatch(postRequest(url, targets.TAGS));
+        return axios.post(url, tag)
             .then(res => {
                 dispatch(postSuccess({
                     data: res.data,
-                }, url));
+                }, url, targets.TAGS));
             })
             .catch(error => {
-                dispatch(postFailure(error, url, tag));
+                dispatch(postFailure(error, url, tag, targets.TAGS));
             });
     };
 };
@@ -278,15 +294,31 @@ export const postNewTag = tag => {
 export const postNewArticle = (thread_id, article) => {
     return (dispatch) => {
         const url = `${API_URL}/threads/${thread_id}/articles`;
-        dispatch(postRequest(url));
-        return axios.post(url, { article })
+        dispatch(postRequest(url, targets.ARTICLES));
+        return axios.post(url, article)
             .then(res => {
                 dispatch(postSuccess({
                     data: res.data,
-                }, url));
+                }, url, targets.ARTICLES));
             })
             .catch(error => {
-                dispatch(postFailure(error, url, article));
+                dispatch(postFailure(error, url, article, targets.ARTICLES));
+            });
+    };
+};
+
+export const postNewQuiz = quiz => {
+    return (dispatch) => {
+        const url = `${API_URL}/quizzes`;
+        dispatch(postRequest(url, targets.QUIZZES));
+        return axios.post(url, quiz)
+            .then(res => {
+                dispatch(postSuccess({
+                    data: res.data,
+                }, url, targets.QUIZZES));
+            })
+            .catch(error => {
+                dispatch(postFailure(error, url, quiz, targets.QUIZZES));
             });
     };
 };

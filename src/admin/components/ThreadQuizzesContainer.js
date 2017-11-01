@@ -15,7 +15,7 @@ class ThreadQuizzesContainer extends React.Component {
         }
         this.updateQuizzes = this.updateQuizzes.bind(this);
         this.handleQuizToggle = this.handleQuizToggle.bind(this);
-        this.addQuizToLocalState = this.addQuizToLocalState.bind(this);
+        this.informQuizPosted = this.informQuizPosted.bind(this);
     }
 
     componentDidMount () {
@@ -46,7 +46,7 @@ class ThreadQuizzesContainer extends React.Component {
                         btnText="Cancel quiz creation"
                     />
                     <NewQuiz 
-                        addQuizToLocalState={this.addQuizToLocalState}
+                        informQuizPosted={this.informQuizPosted}
                         thread={thread ? thread : {threadId : null}}
                     />
                 </div>
@@ -78,7 +78,8 @@ class ThreadQuizzesContainer extends React.Component {
         })
     }
 
-    addQuizToLocalState (quiz) {
+    informQuizPosted (quiz) {
+        console.log(quiz);
         this.setState({
             quizzes : this.state.quizzes.concat(quiz),
             addingQuiz : false
@@ -99,12 +100,10 @@ const mapStateToProps = state => ({
     error : state.admin.threadQuizzes.error
 })
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchQuizzesByThreadId: (threadId) => {
-            dispatch(fetchQuizzesByThreadId(threadId));
-        }
+const mapDispatchToProps = dispatch => ({
+    fetchQuizzesByThreadId: threadId => {
+        dispatch(fetchQuizzesByThreadId(threadId));
     }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThreadQuizzesContainer);
