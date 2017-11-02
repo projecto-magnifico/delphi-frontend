@@ -1,0 +1,18 @@
+export const FETCH_REQUEST = 'FETCH_REQUEST';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_FAILURE = 'FETCH_FAILURE';
+
+export const PATCH_REQUEST = 'PATCH_REQUEST';
+export const PATCH_SUCCESS = 'PATCH_SUCCESS';
+export const PATCH_FAILURE = 'PATCH_FAILURE';
+export const PATCH_RESEND = 'PATCH_RESEND';
+
+export const POST_REQUEST = 'POST_REQUEST';
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const POST_FAILURE = 'POST_FAILURE';
+export const POST_RESEND = 'POST_RESEND';
+
+export const SELECT_ELEMENT = 'SELECT_ELEMENT';
+export const DESELECT_ELEMENT = 'DESELECT_ELEMENT';
+export const DISMISS_ELEMENT = 'DISMISS_ELEMENT';
+

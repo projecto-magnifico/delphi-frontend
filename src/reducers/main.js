@@ -1,3 +1,5 @@
+/*eslint no-fallthrough: "error"*/
+
 import * as types from '../actions/types';
 import * as targets from '../actions/targets';
 
@@ -21,12 +23,13 @@ export const getInitialMainState = () => {
         snapshotLast: [],
         snapshotOneDay: [],
         snapshotOneWeek: [],
-    }
+    };
 };
 
 export default (prevState = getInitialMainState(), action) => {
-    if (!action) return prevState;
 
+
+    if (!action) return prevState;
     switch (action.type) {
         case types.FETCH_REQUEST:
             switch (action.target) {
@@ -37,7 +40,7 @@ export default (prevState = getInitialMainState(), action) => {
                             error: null,
                             data: []
                         })
-                    })
+                    });
                 case targets.QUIZZES:
                     return Object.assign({}, prevState, {
                         quizzes: Object.assign({}, prevState.quizzes, {
@@ -45,7 +48,9 @@ export default (prevState = getInitialMainState(), action) => {
                             error: null,
                             data: []
                         })
-                    })
+                    });
+                default:
+                    return prevState;
             }
         case types.FETCH_SUCCESS:
             switch (action.target) {
@@ -54,17 +59,19 @@ export default (prevState = getInitialMainState(), action) => {
                         stories: Object.assign({}, prevState.stories, {
                             loading: false,
                             error: null,
-                            data: action.payload
+                            data: action.payload.data
                         })
-                    })
+                    });
                 case targets.QUIZZES:
                     return Object.assign({}, prevState, {
                         quizzes: Object.assign({}, prevState.quizzes, {
                             loading: false,
                             error: null,
-                            data: action.payload
+                            data: action.payload.data
                         })
-                    })
+                    });
+                default:
+                    return prevState;
             }
         case types.FETCH_FAILURE:
             switch (action.target) {
@@ -72,33 +79,38 @@ export default (prevState = getInitialMainState(), action) => {
                     return Object.assign({}, prevState, {
                         stories: Object.assign({}, prevState.stories, {
                             loading: false,
-                            error: action.payload,
-                            data: null
+                            error: action.payload.error,
+                            data: []
                         })
-                    })
+                    });
                 case targets.QUIZZES:
                     return Object.assign({}, prevState, {
                         quizzes: Object.assign({}, prevState.quizzes, {
                             loading: false,
-                            error: action.payload,
-                            data: null
+                            error: action.payload.error,
+                            data: []
                         })
-                    })
+                    });
+                default:
+                    return prevState;
             }
+
         case types.SELECT_ELEMENT:
             switch (action.target) {
                 case targets.STORIES:
                     return Object.assign({}, prevState, {
                         stories: Object.assign({}, prevState.stories, {
-                            focusIndex: action.payload.id
+                            focusIndex: action.payload.index
                         })
-                    })
+                    });
                 case targets.QUIZZES:
                     return Object.assign({}, prevState, {
                         quizzes: Object.assign({}, prevState.quizzes, {
-                            focusIndex: action.payload.id
+                            focusIndex: action.payload.index
                         })
-                    })
+                    });
+                default:
+                    return prevState;
             }
         case types.DESELECT_ELEMENT:
             switch (action.target) {
@@ -107,15 +119,17 @@ export default (prevState = getInitialMainState(), action) => {
                         stories: Object.assign({}, prevState.stories, {
                             focusIndex: -1
                         })
-                    })
+                    });
                 case targets.QUIZZES:
                     return Object.assign({}, prevState, {
                         quizzes: Object.assign({}, prevState.quizzes, {
                             focusIndex: -1
                         })
-                    })
+                    });
+                default:
+                    return prevState;
             }
         default:
             return prevState;
     }
-}
+};

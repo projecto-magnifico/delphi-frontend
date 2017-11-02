@@ -18,9 +18,9 @@ class Calendar extends React.Component {
     }
 
 
-    static propTypes = {
-        events : PT.arrayOf(PT.object).isRequired
-    }
+    // static propTypes = {
+    //     events : PT.arrayOf(PT.object).isRequired
+    // }
 }
 
 
