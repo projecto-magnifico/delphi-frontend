@@ -2,178 +2,10 @@
 .All {
     font-family: 'Varela', sans-serif;
     display: inline-block;
-    width: 96%;
+    width: 92%;
     margin-left: 30px;
     background-position: top;
-}
-
-#predictionBoard {
-    padding: 40px;
-    display: inline-flex;
-    width: 100%;
-    background: rgba(255,255,255,0.1);
-}
-
-#innerdiv {
-    width: 70%;
-}
-
-.carousel {
- width: 50%; 
- padding: 1px;
- margin: 0px;
- margin-right: 5px;
- border: 1px solid yellow;  
-}
-
-.tile.predictionCard {
-    width: 100%;
-}
-
-
-#submittedPrediction {
-
-    padding: 1px;
-    width: 35%;
-    margin: 0px;
-    margin-left: 5px;
-}
-
-#submittedPrediction .innerBox {
-    padding: 1px;
-    width: 100%;
-    height: 125px;
-    font-family: 'Varela', sans-serif;
-}
-
-#submittedPrediction h1, p {
-
-    font-family: 'Varela', sans-serif; 
-}
-
-#submittedView {
-    
-    padding: 30px;
-    margin-left: 50px;
-    display: inline-flex;
-    width: 100%;
-    border: 1px solid green;
-}
-
-#innerSlide {
-width: 100%;
-}
-
-#currentPrediction {
-
-    width: 300px;
-  
-}
-
-.predictionBody {
-    width: 50%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 110px;   
-}
-
-
-.predictionText {
-    
-    width: 100%;
-}
-
-#answerGroups {
-display: block;
-width: 100%;
-}
-
-.answerGroup h3,h2 {
-    display: inline-block;
-    font-family: 'Varela', sans-serif;
-}
-
-.answerGroup {
-    width: 100% !important;
-    height: 10% !important;
-    display: inline-block;
-    font-family: 'Varela', sans-serif;
-}
-
-.answerGroup:hover {
-    display: inline-block;
-    background-color: lightgreen;
-    font-family: 'Varela', sans-serif;
-}
-
-#currentQuestion {
-    
-    height: 100px;
-    width: 50%;
-    font-family: 'Varela', sans-serif;
-}
-
-#currentQuestion h1 {
-    width: 480px;
-    font-family: 'Varela', sans-serif;
-}
-
-.fa-info-circle {
-
-    margin-right: 8px;
-}
-
-.fa-info-circle:hover {
-    
-    color: blue;
-    margin-right: 8px;
-}
-
-.fa-times.tile {
-
-    margin-left: 440px;
-    padding-left: 120px;
-}
-
-.fa-times.tile:hover {
-    
-    color: blue;
-    margin-left: 440px;
-    padding-left: 120px;
-}
-
-#modalBody {
-    width: 630px;
-   
-}
-
-#modalBody h1 {
-
-    font-family: 'Varela', sans-serif;
-}
-
-.notification {
-    
-    background-color: lightblue;
-    height: 100px;
-}
-
-.tile {
-    
-        height: 290px;
-        display: block;
-        width: 1400px;
-    
-    }
-    
-    #CurrentQuestion {
-      
-        height: 80px;
-        display: block;
-        width: 450px;
-    
-    }
-    
+}   
     .earth {
         margin: 80px 0 10px 0;
         padding: 0;
@@ -324,3 +156,11 @@ width: 100%;
     .timeline {
         width: 100%;
     }
+
+    .field {
+        width: 100%;
+    }
+
+   .predictionBoard {
+
+   }

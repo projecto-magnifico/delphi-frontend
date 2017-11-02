@@ -10,7 +10,7 @@ class Prediction extends React.Component {
             modalActive: false,
             userPrediction: ""
         }
-        this.displayInfo = this.displayInfo.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -26,35 +26,25 @@ class Prediction extends React.Component {
     render() {
 
         return (
-            <div className="tile predictionCard">
-                <i onClick={this.displayInfo} className="fa fa-info-circle" aria-hidden="true"></i>
-                <Modal id="predictionInfo" isActive={this.state.modalActive}>
-                    <ModalBackground />
-                    <ModalContent>
-                        <ModalCardBody id="modalBody">
-                            <i onClick={this.displayInfo} className="fa fa-times tile is-3" aria-hidden="true"></i>
-                            <h1>Making a prediction</h1>
-                            <Notification className="notification">Make predictions short and relevant</Notification>
-                            <Notification className="notification"></Notification>
-                            <Notification className="notification"></Notification>
-                        </ModalCardBody>
-                    </ModalContent>
-                </Modal>
+            <div className="tile">
                 <Field>
-                    <Label>What happens next...</Label>
                     <Control>
                         <div className="predictionText">
-                            <TextArea onChange={this.handleChange} value={this.state.userPrediction} id="userPrediction" placeholder={'Prediction here'} />
+                            <TextArea onChange={this.handleChange} value={this.state.userPrediction} id="userPrediction" placeholder={'What happens next?'} />
                         </div>
                     </Control>
-                    <Button onClick={this.props.showAnswerOptions}>Check prediction</Button>
+                    <Button onClick={this.handleClick}>Check prediction</Button>
                 </Field>
             </div>
         )
     }
 
-    handleChange(event) {
+    handleClick (e) {
+        e.preventDefault()
+        this.props.showAnswerOptions(this.state.userPrediction)
+    }
 
+    handleChange(event) {
         const newStr = event.target.value;
         this.setState({
             userPrediction: newStr
