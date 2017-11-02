@@ -55,7 +55,7 @@ class Earth extends React.Component {
 
 
         Scene.add(Globe)
-        Scene.background = new three.Color('white')
+        Scene.background = new three.Color('rgb(255, 255, 255)')
 
         const Canvas = document.getElementById('openData');
         Canvas.width = 800;
@@ -113,8 +113,8 @@ class Earth extends React.Component {
             padding: '0px'
         }
         return (
-            <div onClick={this.props.renderAlternativeView} className ='tile earth'>
-                <div ref="anchor" style={style}>
+            <div className ='earth'>
+                <div ref="anchor" style={style} className='Globe'>
                 </div>
                 <canvas style={{display: 'none'}}id="openData"></canvas>
             </div>

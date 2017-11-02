@@ -52,7 +52,7 @@ class PredictionBoard extends React.Component {
 
     render () {
         return (
-            <div id='outerDiv'>
+            <div className='predictionBoard'>
                 {this.state.submitted ? 
                 <div id="submittedView" className="level"> 
                             <div id="submittedPrediction"  >
@@ -66,8 +66,8 @@ class PredictionBoard extends React.Component {
                 
                 <div>
                     {this.state.checking ?
-                    <Box id="predictionBoard" className='uk-card uk-card-default uk-card-hover'>
-                        <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
+                    <Box id="predictionBoard" className='uk-card uk-card-default'>
+                        <Box id="currentQuestion" className="uk-card-default">
                             <h1>How will the Spanish election impact the Catalonian referendum?</h1>
                             <h6><i className="fa fa-clock-o" aria-hidden="true"></i> 48 Hours</h6>
                         </Box>
@@ -76,9 +76,9 @@ class PredictionBoard extends React.Component {
                         </div>
                         </Box>
                     :
-                    <Box id='predictionBoard' className='uk-card uk-card-default uk-card-hover' style={{display: 'block'}}>
+                    <Box id='predictionBoard' className='uk-card uk-card-default' style={{display: 'block'}}>
                         <div id='innerdiv' style={{display: 'inline-flex'}}>
-                            <Box id="currentQuestion" className="tile uk-card-hover uk-card-default">
+                            <Box id="currentQuestion" className="tile uk-card-default">
                                 <h1>How will the Spanish election impact the Catalonian referendum?</h1>
                                 <h6>This quiz will expire in 48 hours</h6>
                             </Box>

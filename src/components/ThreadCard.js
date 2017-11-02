@@ -29,7 +29,7 @@ class ThreadCard extends React.Component {
 
     render() {
         return (    
-                <Box id='threadCard' className="tile uk-card-default uk-card-hover">
+                <Box id='threadCard' className="tile uk-card-default">
                     <div className='uk-card'>
                     <i id = 'compress' onClick={this.props.renderAlternativeView} className="fa fa-compress" aria-hidden="true"></i>
                         <i id = 'right' onClick={this.changePage2} className="fa fa-angle-right" aria-hidden="true"></i>
@@ -39,8 +39,10 @@ class ThreadCard extends React.Component {
                     </div>
                     {this.state.index === 0 ?
                         <div className="uk-card-body page1">
-                        <img id ='threadImg'src="http://politicalhaze.com/wp-content/uploads/2017/06/1-4.jpg"/>
-                        <ul className='uk-list uk-list-divider'>
+                            <div className='threadImgContainer'>
+                                <img id ='threadImg'src="http://politicalhaze.com/wp-content/uploads/2017/06/1-4.jpg"/>
+                            </div>
+                            <ul className='uk-list uk-list-divider'>
                             <li>US Intelligence community reports Russian hackers hacked DNC to influence 2016 election in favour of Trump</li>
                             <li>Multiple US bodies, including FBI, Senate, House and Special Counsel Rober Muller are investigating Russian interference and possible collusion by the Trump Campaign</li>
                             <li>Special Counsel Robert Muller is also investing Trump for obstruction of justice after the firing of FBI Director James Comey</li>

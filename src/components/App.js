@@ -20,8 +20,8 @@ class App extends Component {
         this.state = {
 
             currentUser: "Mitchell",
-            earthWidth : 1100,
-            earthHeight : 900,
+            earthWidth : 900,
+            earthHeight : 750,
             earthStatus: 1
         }
         this.renderAlternativeView = this.renderAlternativeView.bind(this);
@@ -70,17 +70,21 @@ class App extends Component {
                                         <div className='test'>
                                             <div className='view'>
                                                 <div className= 'storyInterface'>
-                                                <Earth
-                                                    width={this.state.earthWidth * 0.8}
-                                                    height={this.state.earthHeight * 0.8}
-                                                />
-                                                <ThreadCard 
-                                                    renderAlternativeView={this.renderAlternativeView}
-                                                    earthStatus={this.state.earthStatus}
-                                                />
+                                                    <div className='earthInApp'>
+                                                        <Earth
+                                                            width={this.state.earthWidth * 0.8}
+                                                            height={this.state.earthHeight * 0.8}
+                                                        />
+                                                        </div>
+                                                        <div className='threadInApp'>
+                                                            <ThreadCard 
+                                                                renderAlternativeView={this.renderAlternativeView}
+                                                                earthStatus={this.state.earthStatus}
+                                                            />
+                                                        </div>
                                                 </div>
                                                 <div className='All'>
-                                                    <PredictionBoard />
+                                                        <PredictionBoard />
                                                 </div>
                                             </div >
                                             <div className ='breakingNews'>
