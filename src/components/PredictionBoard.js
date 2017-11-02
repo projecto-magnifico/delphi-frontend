@@ -20,6 +20,16 @@ const quiz = {
         proto: 'He will flee to Russia',
         votes: 19,
         answer_id: 1
+    },
+    {
+        proto: 'He will be protected by Donald Trump',
+        votes: 19,
+        answer_id: 1
+    },
+    {
+        proto: 'He will cooperate with the FBI and get immunity',
+        votes: 19,
+        answer_id: 1
     }]
 };
 
@@ -97,7 +107,7 @@ class IntegratedPredictionBoard extends React.Component {
                      
                 </div>
 
-                <div className='column'>
+                <div id='carouselColumn' className='column'>
                     {this.state.checking && 
                     
                     <div className="answerGroups">

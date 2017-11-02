@@ -57,6 +57,9 @@ class App extends Component {
                                 <div>
                                     {this.state.earthStatus === 0 ?
                                         <div className='tile is-parent is-12 view uk-animation-fade'>
+                                            <div className='title'>
+                                                <h1>Delphi_</h1>
+                                            </div>
                                             
                                             <Earth
                                                 width={this.state.earthWidth}

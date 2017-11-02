@@ -3,7 +3,7 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import UserPrediction from './UserPrediction.js';
 
-const users = ['Alex', 'Jonny', 'JD', 'Andres', 'Mitch', 'Donald Duck']
+const users = ['Alex', 'Jonny', 'JD', 'Andrea', 'Mitch', 'Donald Duck']
 
 export default class extends React.Component {
     render() {
