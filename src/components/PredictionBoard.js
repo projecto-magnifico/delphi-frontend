@@ -58,7 +58,7 @@ class PredictionBoard extends React.Component {
                             <div id="submittedPrediction"  >
                                 <UserPrediction name={this.props.currentUser} prediction={document.getElementById("userPrediction").value}></UserPrediction>                        
                             </div>
-                            <div className="level-item">
+                            <div className="carousel">
                                 <PredictionCarousel></PredictionCarousel>
                             </div>
                     </div> 

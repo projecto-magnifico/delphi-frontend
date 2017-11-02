@@ -19,7 +19,7 @@ const otherPredictions = [
 export default class extends React.Component {
   render() {
     return (
-      <div id="innerSlide">
+      <div id="innerSlide" className='uk-card uk-card-default uk-card-hover'>
         <CarouselProvider 
           naturalSlideWidth={100}
           naturalSlideHeight={50}
@@ -29,8 +29,6 @@ export default class extends React.Component {
               return <Slide index={i} ><UserPrediction name={otherPrediction.name} prediction={otherPrediction.prediction} /></Slide>
             })}
           </Slider>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
         </CarouselProvider>
       </div>
     );

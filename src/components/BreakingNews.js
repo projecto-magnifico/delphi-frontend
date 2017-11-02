@@ -8,7 +8,7 @@ class NewsFeed extends React.Component {
     }
     render () {
         return (
-            <div className = "uk-card-default uk-card-hover tile is-3" id="breakingNews">
+            <div className = "uk-card-default uk-card-hover" id="breakingNews">
                 <ul className = "uk-list">
                 {[1,2,3].map((card, index) => {
                     return <li key={index}><NewsCard /></li>
