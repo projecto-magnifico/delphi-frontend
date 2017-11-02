@@ -2,7 +2,7 @@ import React from 'react'
 import Prediction from './Prediction.js'
 import AnswerGroups from './AnswerGroups.js'
 import {Box, Button} from 'bloomer';
-import findSuggestions from '../logic/suggestionLogic.js';
+// import findSuggestions from '../logic/suggestionLogic.js';
 import PredictionCarousel from './PredictionCarousel.js';
 import _ from 'underscore';
 import UserPrediction from './UserPrediction.js'
@@ -34,7 +34,7 @@ class PredictionBoard extends React.Component {
     showAnswerOptions () {
 
         const userPrediction = document.getElementById("userPrediction").value;
-        const newSuggestions = _.pluck(findSuggestions(quizAdmin.answerOptions,userPrediction),"target");
+        const newSuggestions = _.pluck(this.findSuggestions(quizAdmin.answerOptions,userPrediction),"target");
         quiz.answerOptions = newSuggestions
         const newChecking = !this.state.checking;
         this.setState({

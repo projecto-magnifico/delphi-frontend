@@ -23,10 +23,11 @@ class ResultQuizzes extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.main)
     return {
-        loading: state.main.quizzes.loading,
-        error: state.main.quizzes.error,
-        quizzes: state.main.quizzes.data
+        loading: state.admin.quizzes.loading,
+        error: state.admin.quizzes.error,
+        quizzes: state.admin.quizzes.data
     }
 }
 

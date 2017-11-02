@@ -1,33 +1,57 @@
-import React from 'react'
-import './css/NewsCard.css'
+import React from 'react';
+import PT from 'prop-types';
+import {connect} from 'react-redux';
+import './css/NewsCard.css';
 import {Box} from 'bloomer';
+import {selectElement} from '../actions';
 
 class NewsCard extends React.Component {
     constructor(props) {
         super(props)
-        
+        this.handleClick = this.handleClick.bind(this);
     }
     
     render() {
-       
+        const {story, rank} = this.props;
         return (
             <div id="particles">
                 <Box id ='newsCard'className= "uk-card-default uk-card-hover ">
                     <div id="card">
                         <div id="newsHeader" className="uk-card-header">
-                            <span> <h3 className="uk-card-title"> <img id="sourceIcon" src="http://icons.veryicon.com/ico/System/Circle/bbc%20news.ico" /> Heading</h3></span>
+                            <h3 className="uk-card-title">{rank + 1}. {story.name ? story.name : "Top Story..."}</h3>
                         </div>
-                        <div className="uk-card uk-card-body" id="newsBody">
-                            <p id="newsDescription" className="uk-card-body">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                        </div>
-                        <div className="uk-card-footer">
-                        <button className="uk-button uk-button-primary uk-button-small">Follow</button>
-                        </div>
+                        {rank === 0 &&
+                            <span>
+                                <img id="sourceIcon" src={story.imageUrl} />
+                            </span>
+                        }
+                        <button 
+                            className="uk-button uk-button-primary uk-button-small"
+                            onClick={this.handleClick}
+                        >
+                            Track
+                        </button>
                     </div>
                 </Box>
             </div>
         )
     }
+
+    handleClick (e) {
+        e.preventDefault();
+        this.props.selectElement(this.props.rank);
+    }
+
+    static propTypes = {
+        story : PT.object.isRequired,
+        rank : PT.number.isRequired
+    }
 }
 
-export default NewsCard
+const mapDispatchToProps = dispatch => ({
+    selectElement : index => {
+        dispatch(selectElement(index));
+    }
+})
+
+export default connect(null, mapDispatchToProps)(NewsCard)

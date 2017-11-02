@@ -1,5 +1,5 @@
 const {expect} = require("chai");
-const getSuggestions = require("../suggestionLogic.js");
+// const getSuggestions = require("../suggestionLogic.js");
 
 
 describe("getSuggestios",() => {
