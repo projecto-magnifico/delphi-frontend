@@ -11,8 +11,8 @@ class NewsCard extends React.Component {
     render() {
        
         return (
-            <div id="particles">
-                <Box id ='newsCard'className= "uk-card-default uk-card-hover ">
+            
+                <Box id ='newsCard'className= "uk-card uk-card-hover ">
                     <div id="card">
                         <div id="newsHeader" className="uk-card-header">
                             <span> <h3 className="uk-card-title"> <img id="sourceIcon" src="http://icons.veryicon.com/ico/System/Circle/bbc%20news.ico" /> Heading</h3></span>
@@ -25,7 +25,7 @@ class NewsCard extends React.Component {
                         </div>
                     </div>
                 </Box>
-            </div>
+          
         )
     }
 }

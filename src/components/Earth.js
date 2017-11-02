@@ -113,8 +113,8 @@ class Earth extends React.Component {
             padding: '0px'
         }
         return (
-            <div onClick={this.props.renderAlternativeView} className ='tile earth'>
-                <div ref="anchor" style={style}>
+            <div className ='earth'>
+                <div ref="anchor" style={style} className='Globe'>
                 </div>
                 <canvas style={{display: 'none'}}id="openData"></canvas>
             </div>

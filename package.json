@@ -23,6 +23,7 @@
     "lodash": "^4.17.4",
     "particles.js": "^2.0.0",
     "particlesjs": "^2.0.2",
+    "prop-types": "^15.6.0",
     "pure-react-carousel": "^1.9.9",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

@@ -20,8 +20,8 @@ class App extends Component {
         this.state = {
 
             currentUser: "Mitchell",
-            earthWidth : 1200,
-            earthHeight : 1000,
+            earthWidth : 1000,
+            earthHeight : 800,
             earthStatus: 1
         }
         this.renderAlternativeView = this.renderAlternativeView.bind(this);
@@ -31,8 +31,8 @@ class App extends Component {
         event.preventDefault();
         if(this.state.earthStatus === 1) {
             this.setState({
-                earthWidth: 1200,
-                earthHeight: 1000,
+                earthWidth: 1000,
+                earthHeight: 800,
                 earthStatus: 0
             })
         }
@@ -49,52 +49,71 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                    <div className="All">
-                                <Route
-                                    exact path="/"
-                                    render={() =>
-                                    (
-
-            
-
-                                        <div> 
-                                            {this.state.earthStatus === 0 ? 
-                                            <div className='tile is-parent is-12 view uk-animation-fade'>
-
-                                                <Earth
+                <div>
+                    <Route
+                        exact path="/"
+                        render={() =>
+                            (
+                                <div>
+                                    {this.state.earthStatus === 0 ?
+                                        <div className='tile is-parent is-12 view uk-animation-fade'>
+                                            <div className='title'>
+                                                <h1>Delphi_</h1>
+                                            </div>
+                                            
+                                            <Earth
                                                 width={this.state.earthWidth}
                                                 height={this.state.earthHeight}
-                                                />
+                                            />
+                                            <div className= 'bigNewsFeed'>
+
+                                            <BreakingNews />
+                                            </div>
+                                            
+                                        </div>
+
+                                        :
+
+                                        <div className='test'>
+                                            <div className='view'>
+                                                <div className= 'storyInterface'>
+                                                    <div className='earthInApp'>
+                                                        <Earth
+                                                            width={this.state.earthWidth * 0.8}
+                                                            height={this.state.earthHeight * 0.8}
+                                                        />
+                                                        </div>
+                                                        <div className='threadInApp'>
+                                                            <ThreadCard 
+                                                                renderAlternativeView={this.renderAlternativeView}
+                                                                earthStatus={this.state.earthStatus}
+                                                            />
+                                                        </div>
+                                                </div>
+                                                <div className='All'>
+                                                        <PredictionBoard />
+                                                </div>
+                                            </div >
+                                            <div className ='breakingNews'>
                                                 <BreakingNews />
                                             </div>
-                                                :
-                                                
-                                            <div className='tile is-parent is-12 view '>
-                                                    <Earth
-                                                        width={this.state.earthWidth * 0.8}
-                                                        height={this.state.earthHeight * 0.8}
-                                                    />
-                                                     <ThreadCard 
-                                                     renderAlternativeView={this.renderAlternativeView}
-                                                     earthStatus={this.state.earthStatus}
-                                                     />                                               
-                                                    <BreakingNews />
-                                                    <PredictionBoard />
-                                            </div>
-                                                } 
+
                                         </div>
-                                    )
+
                                     }
-                                />
-                                <Route
-                                    exact path='/admin'
-                                    render={() =>
-                                        <div className="Admin">
-                                            <AdminHome />
-                                        </div>
-                                    }
-                                />
+                                </div>
+                            )
+                        }
+                    />
+                    <Route
+                        exact path='/admin'
+                        render={() =>
+                            <div className="Admin">
+                                <AdminHome />
                             </div>
+                        }
+                    />
+                </div>
             </BrowserRouter>
         );
     }
