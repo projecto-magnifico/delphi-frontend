@@ -11,12 +11,8 @@ export const getInitialMainState = () => {
             data: [],
             focusIndex: -1
         },
-        quizzes: {
-            loading: false,
-            error: null,
-            data: [],
-            focusIndex: -1
-        },
+
+        answerPostError : null,
 
         user: '',
         tags: [],
@@ -41,14 +37,6 @@ export default (prevState = getInitialMainState(), action) => {
                             data: []
                         })
                     });
-                case targets.QUIZZES:
-                    return Object.assign({}, prevState, {
-                        quizzes: Object.assign({}, prevState.quizzes, {
-                            loading: true,
-                            error: null,
-                            data: []
-                        })
-                    });
                 default:
                     return prevState;
             }
@@ -57,14 +45,6 @@ export default (prevState = getInitialMainState(), action) => {
                 case targets.STORIES:
                     return Object.assign({}, prevState, {
                         stories: Object.assign({}, prevState.stories, {
-                            loading: false,
-                            error: null,
-                            data: action.payload.data
-                        })
-                    });
-                case targets.QUIZZES:
-                    return Object.assign({}, prevState, {
-                        quizzes: Object.assign({}, prevState.quizzes, {
                             loading: false,
                             error: null,
                             data: action.payload.data
@@ -83,14 +63,6 @@ export default (prevState = getInitialMainState(), action) => {
                             data: []
                         })
                     });
-                case targets.QUIZZES:
-                    return Object.assign({}, prevState, {
-                        quizzes: Object.assign({}, prevState.quizzes, {
-                            loading: false,
-                            error: action.payload.error,
-                            data: []
-                        })
-                    });
                 default:
                     return prevState;
             }
@@ -100,12 +72,6 @@ export default (prevState = getInitialMainState(), action) => {
                 case targets.STORIES:
                     return Object.assign({}, prevState, {
                         stories: Object.assign({}, prevState.stories, {
-                            focusIndex: action.payload.index
-                        })
-                    });
-                case targets.QUIZZES:
-                    return Object.assign({}, prevState, {
-                        quizzes: Object.assign({}, prevState.quizzes, {
                             focusIndex: action.payload.index
                         })
                     });
@@ -120,11 +86,41 @@ export default (prevState = getInitialMainState(), action) => {
                             focusIndex: -1
                         })
                     });
-                case targets.QUIZZES:
+                default:
+                    return prevState;
+            }
+        case types.POST_REQUEST:
+            switch (action.target) {
+                case targets.ANSWERS:
                     return Object.assign({}, prevState, {
-                        quizzes: Object.assign({}, prevState.quizzes, {
-                            focusIndex: -1
-                        })
+                        answerPostError : null
+                    });
+                default:
+                    return prevState;
+            }
+        case types.POST_FAILURE:
+            switch (action.target) {
+                case targets.ANSWERS:
+                    return Object.assign({}, prevState, {
+                        answerPostError : action.payload.error
+                    });
+                default:
+                    return prevState;
+            }
+        case types.PATCH_REQUEST:
+            switch (action.target) {
+                case targets.ANSWERS:
+                    return Object.assign({}, prevState, {
+                        answerPostError : null
+                    });
+                default:
+                    return prevState;
+            }
+        case types.PATCH_FAILURE:
+            switch (action.target) {
+                case targets.ANSWERS:
+                    return Object.assign({}, prevState, {
+                        answerPostError : action.payload.error
                     });
                 default:
                     return prevState;

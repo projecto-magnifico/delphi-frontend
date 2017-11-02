@@ -8,3 +8,4 @@ export const KEYWORDS = 'KEYWORDS';
 export const ARTICLES = 'ARTICLES';
 export const REQUESTS = 'REQUESTS';
 export const TAGS = 'TAGS';
+export const ANSWERS = 'ANSWERS';

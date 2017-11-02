@@ -13,8 +13,7 @@ class UserPrediction extends React.Component {
             <div>
                 <Box>
                     <Box className="innerBox">
-                        <Image isSize='48x48' src='https://via.placeholder.com/48x48' />
-                        <p>{this.props.name}</p>
+                        <p>{this.props.name ? this.props.name : 'You'}:</p>
                     </Box>
                     <Box className="innerBox">
                         <h1>{this.props.prediction}</h1>

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import OrbitControls from 'three-orbitcontrols'
 import cities from "./utils/utils.js"
 import locIcon  from '../maps/location-Icon.png';
+import PT from 'prop-types';
 
 class Earth extends React.Component {
     constructor(props) {
@@ -119,6 +120,12 @@ class Earth extends React.Component {
                 <canvas style={{display: 'none'}}id="openData"></canvas>
             </div>
         )
+    }
+
+    static propTypes = {
+        width : PT.number.isRequired,
+        height : PT.number.isRequired,
+        story : PT.object.isRequired
     }
 }
 

@@ -2,7 +2,7 @@ import * as types from './types.js';
 import * as targets from './targets.js';
 import axios from 'axios';
 
-const API_URL = 'localhost:3000/api';
+const API_URL = `ron-10.c937luppnqvc.eu-west-2.rds.amazonaws.com`;
 
 export const fetchRequest = (target) => ({
     type: types.FETCH_REQUEST,
@@ -241,6 +241,22 @@ export const patchQuiz = (id, newData, index) => {
     }
 }
 
+export const patchAnswer = (answer_id, newData, index) => {
+    return dispatch => {
+        const url = `${API_URL}/quizzes/answers/${answer_id}`;
+        dispatch(patchRequest(url, targets.ANSWERS, index));
+        return axios.patch(url, newData)
+            .then(res => {
+                dispatch(patchSuccess({
+                    data: res.data,
+                }, url, targets.ANSWERS, index))
+            })
+            .catch(error => {
+                dispatch(patchFailure(error, url, newData, targets.ANSWERS, index));
+            })
+    }
+}
+
 
 export const postRequest = (url, target) => ({
     type: types.POST_REQUEST,
@@ -322,3 +338,19 @@ export const postNewQuiz = quiz => {
             });
     };
 };
+
+export const postNewAnswer = (quiz_id, answer) => {
+    return (dispatch) => {
+        const url = `${API_URL}/quizzes/answers/${quiz_id}`;
+        dispatch(postRequest(url, targets.ANSWERS));
+        return axios.post(url, answer)
+            .then(res => {
+                dispatch(postSuccess({
+                    data : res.data
+                }, url, targets.ANSWERS));
+            })
+            .catch(error => {
+                dispatch(postFailure(error, url, answer, targets.ANSWERS))
+            })
+    }
+}
