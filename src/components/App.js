@@ -20,8 +20,8 @@ class App extends Component {
         this.state = {
 
             currentUser: "Mitchell",
-            earthWidth : 900,
-            earthHeight : 750,
+            earthWidth : 1000,
+            earthHeight : 800,
             earthStatus: 1
         }
         this.renderAlternativeView = this.renderAlternativeView.bind(this);
@@ -57,12 +57,16 @@ class App extends Component {
                                 <div>
                                     {this.state.earthStatus === 0 ?
                                         <div className='tile is-parent is-12 view uk-animation-fade'>
-
+                                            
                                             <Earth
                                                 width={this.state.earthWidth}
                                                 height={this.state.earthHeight}
                                             />
+                                            <div className= 'bigNewsFeed'>
+
                                             <BreakingNews />
+                                            </div>
+                                            
                                         </div>
 
                                         :

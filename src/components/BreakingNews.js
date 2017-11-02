@@ -8,8 +8,8 @@ class NewsFeed extends React.Component {
     }
     render () {
         return (
-            <div className = "uk-card-default" id="breakingNews">
-                <ul className = "uk-list">
+            <div className = "uk-card" id="breakingNews">
+                <ul className = "uk-list" id='newsList'>
                 {[1,2,3, 4, 5].map((card, index) => {
                     return <li key={index}><NewsCard /></li>
                 })}

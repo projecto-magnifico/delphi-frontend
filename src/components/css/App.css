@@ -2,19 +2,20 @@
 .All {
     font-family: 'Varela', sans-serif;
     display: inline-block;
-    width: 100%;
-    margin-right: 45px;
+    width: 96%;
+    margin-left: 30px;
+    background-position: top;
 }
 
 #predictionBoard {
-    padding: 30px;
+    padding: 40px;
     display: inline-flex;
     width: 100%;
+    background: rgba(255,255,255,0.1);
 }
 
 #innerdiv {
     width: 70%;
-  
 }
 
 .carousel {
@@ -197,6 +198,7 @@ width: 100%;
         margin-right: 45px;
         margin-bottom: 30px;
         max-width: 100%;
+        background: rgba(255,255,255,0.6);
     }
     
     #threadImg {
@@ -283,6 +285,8 @@ width: 100%;
         display: inline-block;
         width: 20%;
         height: 100%;
+        background-image: url('http://www.wallpaperbetter.com/wallpaper/390/832/917/digital-art-minimalism-simple-triangle-diamonds-geometry-1080P-wallpaper.jpg');
+        background-position: center ;
     }
 
     .earthInApp{
@@ -294,6 +298,7 @@ width: 100%;
     .threadInApp{
         width: 45%;
         font-size: 0.9em;
+        margin-left: 30px;
     }
 
     .Globe{
@@ -303,4 +308,19 @@ width: 100%;
 
     .threadImgContainer{
         text-align: center;
+    }
+
+    #newsCard {
+        background: rgba(255,255,255,0.6);
+       
+    }
+    
+    .bigNewsFeed {
+        background-image: url('https://i.pinimg.com/736x/b9/0a/91/b90a91d2cf494108e2be07e39bf8a8b4.jpg');
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+
+    .timeline {
+        width: 100%;
     }
