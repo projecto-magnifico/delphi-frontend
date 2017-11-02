@@ -26,24 +26,30 @@ class QueryKeywords extends React.Component {
                     <div className="control">
                         <label className="checkbox">
                         <input type="checkbox" checked={this.state.checkboxChecked} onChange={this.handleCheck}/>
-                        Only select untagged
+                        {` Only select untagged`}
                         </label>
                     </div>
-                    <div className="control">
-                        <input type="radio" name="question" value="top" onFocus={this.handleFocus} />
-                        <label className="radio">
-                        Show the top...
-                        </label>
-                        <input type="radio" name="question" value="important" onFocus={this.handleFocus} />
-                        <label className="radio">
-                        Show from threads ranked 1 to...
-                        </label>
-                    </div>
-                    <div className="control">
-                    <input className="input" type="number" value={this.state.value} placeholder="10" onChange={this.handleChange}/>
-                    </div>
-                    <div className="control">
-                    <button className="button is-link" type="submit">Submit</button>
+                    <ul className="control">
+                        <li>
+                            <label className="radio">
+                                <input type="radio" name="question" value="top" onFocus={this.handleFocus} />
+                                {` Show the top...`}
+                            </label>
+                        </li>
+                        <li>
+                            <label className="radio">
+                                <input type="radio" name="question" value="important" onFocus={this.handleFocus} />
+                                {` Show from threads ranked 1 to...`}
+                            </label>
+                        </li>
+                    </ul>
+                    <div className="field has-addons">
+                        <div className="control">
+                            <input className="input" type="number" value={this.state.value} placeholder="10" onChange={this.handleChange}/>
+                        </div>
+                        <div className="control">
+                            <button className="button is-link" type="submit">Load</button>
+                        </div>
                     </div>
                 </div>
             </div>

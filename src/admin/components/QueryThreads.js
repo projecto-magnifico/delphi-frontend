@@ -26,29 +26,37 @@ class QueryThreads extends React.Component {
                     <div className="control">
                         <label className="checkbox">
                             <input type="checkbox" checked={this.state.checkboxChecked} onChange={this.handleCheck}/>
-                            Only select unnamed
+                            {` Only select unnamed`}
                         </label>
                     </div>
-                    <div className="control">
-                        <label className="radio">
-                            <input type="radio" name="question" value="null" onFocus={this.handleFocus} />
-                            No summary
-                        </label>
-                        <label className="radio">
-                            <input type="radio" name="question" value="due" onFocus={this.handleFocus}/>
-                            Summary due
-                        </label>
-                        <label className="radio">
-                            <input type="radio" name="question" value="any" onFocus={this.handleFocus}/>
-                            Any summary
-                        </label>
-                    </div>
+                    <ul className="control">
+                        <li>
+                            <label className="radio">
+                                <input type="radio" name="question" value="null" onFocus={this.handleFocus} />
+                                {` No summary`}
+                            </label>
+                        </li>
+                        <li>
+                            <label className="radio">
+                                <input type="radio" name="question" value="due" onFocus={this.handleFocus}/>
+                                {` Summary due`}
+                            </label>
+                        </li>
+                        <li>
+                            <label className="radio">
+                                <input type="radio" name="question" value="any" onFocus={this.handleFocus}/>
+                                {` Any summary`}
+                            </label>
+                        </li>
+                    </ul>
                     <label className="label">Select the top...</label>
-                    <div className="control">
-                        <input className="input" type="number" value={this.state.count} placeholder="10" onChange={this.handleChange}/>
-                    </div>
-                    <div className="control">
-                        <button className="button is-link" type="submit">Submit</button>
+                    <div className="field has-addons">
+                        <div className="control">
+                            <input className="input" type="number" value={this.state.count} placeholder="10" onChange={this.handleChange}/>
+                        </div>
+                        <div className="control">
+                            <button className="button is-link" type="submit">Load</button>
+                        </div>
                     </div>
                 </div>
             </form>

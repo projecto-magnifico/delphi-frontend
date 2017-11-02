@@ -19,37 +19,28 @@ class QueryQuizzes extends React.Component {
             <div className="box">
                 <p className="subtitle">Inspect Quizzes</p>
                 <div className="field">
-                <label className="label">Show...</label>
-                <div className="control">
-                    <label className="radio">
-                        <input type="radio" name="question" value="open" onFocus={this.handleFocus} />
-                        ...open
-                    </label>
-                    <label className="radio">
-                        <input type="radio" name="question" value="waiting" onFocus={this.handleFocus} />
-                        ...waiting
-                    </label>
-                    <label className="radio">
-                        <input type="radio" name="question" value="pending" onFocus={this.handleFocus} />
-                        ...pending
-                    </label>
-                    <label className="radio">
-                        <input type="radio" name="question" value="closed" onFocus={this.handleFocus} />
-                        ...closed
-                    </label>
-                    <label className="radio">
-                        <input type="radio" name="question" value="revisit" onFocus={this.handleFocus} />
-                        ...next to revisit
-                    </label>
+                    <label className="label">Show...</label>
+                    <ul>
+                        {['open', 'waiting', 'pending', 'closed', 'revisit'].map((state, i) => {
+                            return <li key={i}>
+                                <label className="radio">
+                                <input type="radio" name="answer" value={state} onFocus={this.handleFocus} />
+                                {` ${state}`}
+                            </label>
+
+                            </li>
+                        })}
+                    </ul>
+                    <label className="label">Select the most recent</label>
+                    <div className="field has-addons">
+                        <div className="control">
+                            <input className="input" type="number" onChange={this.handleChange}/>
+                        </div>
+                        <div className="control">
+                            <button className="button is-link" type="submit">Load</button>
+                        </div>
+                    </div>
                 </div>
-                <label className="label">Select the top...</label>
-                <div className="control">
-                    <input className="input" type="number" placeholder="choose number" onChange={this.handleChange}/>
-                </div>
-                <div className="control">
-                <button className="button is-link" type="submit">Submit</button>
-                </div>
-            </div>
             </div>
         );
     }
@@ -68,18 +59,19 @@ class QueryQuizzes extends React.Component {
     }
 
     handleSubmit (e) {
+        const {count, restriction} = this.state;
+        const {fetchQuizzesForAdmin} = this.props;
         e.preventDefault();
-        const query = `restriction=${this.state.restriction}&count=${this.state.count}`
-        this.props.fetchQuizzesForAdmin(query);
+        const query = `restriction=${restriction}&count=${count}`;
+        fetchQuizzesForAdmin(query);
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchQuizzesForAdmin: (query) => {
-            dispatch(fetchQuizzesForAdmin(query));
-        }
+const mapDispatchToProps = dispatch => ({
+    fetchQuizzesForAdmin: query => {
+        dispatch(fetchQuizzesForAdmin(query));
     }
-}
+})
+
 
 export default connect(null, mapDispatchToProps)(QueryQuizzes)
