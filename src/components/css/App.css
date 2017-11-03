@@ -5,7 +5,7 @@
     width: 92%;
     margin-left: 30px;
     background-position: top;
-    
+   
 }   
     .earth {
         margin: 80px 0 10px 0;
@@ -22,6 +22,7 @@
         margin: 0px;
         width: 80%;
         float: left;
+        background: #CEEBF2
     }
     
     #threadCard {
@@ -31,6 +32,7 @@
         margin-right: 45px;
         margin-bottom: 30px;
         max-width: 100%;
+        background: rgba(255,255,255,0.4);
        
     }
     
@@ -118,7 +120,7 @@
         display: inline-block;
         width: 20%;
         height: 100%;
-       background-color: #00BFFF
+       background-color: #4481A6
     }
 
     .earthInApp{
@@ -151,7 +153,7 @@
     .bigNewsFeed {
         /* background-image: url('http://www.wallpaperbetter.com/wallpaper/390/832/917/digital-art-minimalism-simple-triangle-diamonds-geometry-1080P-wallpaper.jpg');
         background-position: center ; */
-        background-color: #00BFFF;
+        background-color: #4481A6;
         width: 35%;
     }
 

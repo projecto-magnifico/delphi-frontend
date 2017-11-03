@@ -13,8 +13,8 @@ class TimelineElement extends React.Component {
                               <span></span>
                                 <div className="timeline-marker"></div>
                                 <div className="timeline-content">
-                                    <p className="heading">Day/Month/Year</p>
-                                    <p>Timeline content - Can include any HTML element</p>
+                                    <p className="heading">{this.props.date}</p>
+                                    <p>{this.props.title}</p>
                                 </div>
                             </li>
                             </div>

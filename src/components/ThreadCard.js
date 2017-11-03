@@ -10,6 +10,15 @@ const headLines = [
     {title: 'Trump campaign executive George Papadopulos actively cooperating with Muller since July'}
 ]
 
+const timeline = [
+    {title: 'Trump hires manafort as campaign chairman', date: 'March 2016'},
+    {title: 'Manafort resigns from the Trump campaign due to ties with the Russian government', date: 'August 2016'},
+    {title: 'Trump wins the election', date: 'November 2016'},
+    {title: 'Trump fires FBI director James Comey, who was investigating Trump campaign collusion with Russia', date: 'May 2017'},
+    {title: 'Attorny General Jef Sessions recuses himself and deputy Rod Rosenstein appoints special counsel Robert Muller to investigate obstruction of justice by Trump', date:'May 2017'},
+    {title: 'Paul Manafort and two other executives of the Trump campaign are indicted by special counsel Robert Muler', date: 'October 2017'}
+]
+
 class ThreadCard extends React.Component {
     constructor(props) {
         super(props)
@@ -64,8 +73,8 @@ class ThreadCard extends React.Component {
                         :
                         
                     <div id='page1' className="uk-card-body page1">
-                        {[1,2,3,4,5].map((element,index) => {
-                            return <TimelineElement key={index}/>
+                        {timeline.map((element,index) => {
+                            return <TimelineElement key={index} title={element.title} date={element.date} />
                         })}
                     </div>
                         }

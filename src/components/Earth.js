@@ -56,7 +56,7 @@ class Earth extends React.Component {
 
 
         Scene.add(Globe)
-        Scene.background = new three.Color('white')
+        Scene.background = new three.Color('#CEEBF2')
 
         const Canvas = document.getElementById('openData');
         Canvas.width = 800;
