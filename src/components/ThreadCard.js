@@ -5,9 +5,9 @@ import TimelineElement from './TimelineElement';
 import LatestDevelopmentComponent from './LatestDevelopmentComponent.js'
 
 const headLines = [
-    {title: 'Kushner turned documents over to Special Counsel Robert Muller'},
-    {title: 'Former Trump campaing chairman Paul Manafort indicted along with associate Rick Gates'},
-    {title: 'Trump campaign executive George Papadopulos actively cooperating with Muller since July'}
+    {title: 'Catalonia sacked leader Carles Puigdemont is currently in Belgium but claims is not seeking asylum'},
+    {title: 'Other Catalonian leaders are being trials for rebellion and face harsh sentences'},
+    {title: 'King Phelipe appeals for unity, whilst prosecutors seek the arrest of Carles Puigdemont'}
 ]
 
 const timeline = [
@@ -50,17 +50,17 @@ class ThreadCard extends React.Component {
                         <i id = 'right' onClick={this.changePage2} className="fa fa-angle-right" aria-hidden="true"></i>
                     <i id ='left'onClick={this.changePage1} className="fa fa-angle-left" aria-hidden="true"></i>
                     <div className='uk-card-header'>
-                        <h1>Trump and Russia</h1>
+                        <h1>Catalonian Independence</h1>
                     </div>
                     {this.state.index === 0 ?
                         <div className="uk-card-body page1">
                             <div className='threadImgContainer'>
-                                <img id ='threadImg'src="http://politicalhaze.com/wp-content/uploads/2017/06/1-4.jpg"/>
+                                <img id ='threadImg'src="http://drawingbarcelona.com/wp-content/uploads/2017/02/09-bologna-lanscape-w-468x328.jpg"/>
                             </div>
                             <ul className='uk-list uk-list-divider'>
-                            <li>US Intelligence community reports Russian hackers hacked DNC to influence 2016 election in favour of Trump</li>
-                            <li>Multiple US bodies, including FBI, Senate, House and Special Counsel Rober Muller are investigating Russian interference and possible collusion by the Trump Campaign</li>
-                            <li>Special Counsel Robert Muller is also investing Trump for obstruction of justice after the firing of FBI Director James Comey</li>
+                            <li>Catalonia is the richest region of spain, accounitng for 20% of its total GDP. It's also culturally and linguistically different from the rest of Spain has traditionally maintained a strong cultural independence</li>
+                            <li>In October 2017 the leaders of the Catalonian government called for an independence referendum. The main governement in Madrid however declared the referendum unconstitutional sparking protests in Barcelona </li>
+                            <li>The Spanish governement has revoked Catalonia's special status and taken direct control of the region</li>
                             <li><h3>Latest Developments :</h3></li>
                             <ul className='uk-list uk-list-bullet uk-list-divider'>
                                 {headLines.map((element, index) => {

@@ -10,7 +10,7 @@ import PT from 'prop-types';
 import {connect} from 'react-redux';
 
 const quiz = {
-    question: 'What will happen to Paul Manafort?',
+    question: 'What will the outcome of the referendum be?',
     answers: [{
         proto: 'He will go to jail',
         votes: 19,

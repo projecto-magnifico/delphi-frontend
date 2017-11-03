@@ -74,12 +74,9 @@ class Earth extends React.Component {
             context.beginPath();
             context.arc(long,lat,2,0,2*Math.PI)
 
-            context.moveTo(486,113);
-            context.lineTo(230,180);
+            context.moveTo(407,132);
+            context.lineTo(395,170);
             context.lineWidth=0.5;
-
-            context.moveTo(230,180);
-            context.lineTo(530,353)
 
             context.fillStyle = 'red';
             context.fill();
@@ -97,13 +94,10 @@ class Earth extends React.Component {
             context.strokeStyle = 'red';
             context.stroke();
         }
-        if (this.props.threadId === 1) {
-            addDataPoint(483,114);
-            addDataPoint(230,180);
-            addDataPoint(530,353)
-            drawLines(230,180,483,114) 
-            drawLines(230,180,530,353) 
-        }
+     
+            addDataPoint(407,132);
+            addDataPoint(395,170);
+        
         Scene.add(DataGlobe)
 
         function GlobeLoop () {
