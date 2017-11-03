@@ -7,7 +7,7 @@ class LatestDevelopmentComponent extends React.Component{
     render() {
         return (
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua.</p>
+                <p>{this.props.title}</p>
             </div>
         )
     }

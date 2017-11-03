@@ -5,24 +5,30 @@ import {Box} from 'bloomer';
 class NewsCard extends React.Component {
     constructor(props) {
         super(props)
+
+        this.handleClick = this.handleClick.bind(this)
         
     }
-    
+    handleClick(event) {
+      
+        console.log(event.target.value)
+        event.preventDefault();
+        this.props.changeThread(event.target.value)
+    }
     render() {
        
         return (
             
                 <Box id ='newsCard'className= "uk-card uk-card-hover ">
+                    {console.log('props-->',this.props)}
                     <div id="card">
                         <div id="newsHeader" className="uk-card-header">
-                            <span> <h3 className="uk-card-title"> <img id="sourceIcon" src="http://icons.veryicon.com/ico/System/Circle/bbc%20news.ico" /> Heading</h3></span>
+                            <span> <h3 className="uk-card-title">{this.props.title}</h3></span>
                         </div>
                         <div className="uk-card uk-card-body" id="newsBody">
-                            <p id="newsDescription" className="uk-card-body">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                        <button onClick={this.handleClick} value={this.props.thread_id}className="uk-button uk-button-primary uk-button-small">Display</button>
                         </div>
-                        <div className="uk-card-footer">
-                        <button className="uk-button uk-button-primary uk-button-small">Follow</button>
-                        </div>
+                        
                     </div>
                 </Box>
           

@@ -22,9 +22,11 @@ class App extends Component {
             currentUser: "Mitchell",
             earthWidth : 1000,
             earthHeight : 800,
-            earthStatus: 1
+            earthStatus: 0,
+            threadId: 0
         }
         this.renderAlternativeView = this.renderAlternativeView.bind(this);
+        this.changeThread = this.changeThread.bind(this);
     }
 
     renderAlternativeView(event) {
@@ -46,6 +48,15 @@ class App extends Component {
         }
     }
 
+    changeThread(thread_id) {
+        this.setState({
+            earthStatus: 1,
+            threadId: thread_id
+        })
+    }
+
+
+
     render() {
         return (
             <BrowserRouter>
@@ -54,33 +65,40 @@ class App extends Component {
                         exact path="/"
                         render={() =>
                             (
-                                <div>
+                                <div id="particles-js">
                                     {this.state.earthStatus === 0 ?
                                         <div className='tile is-parent is-12 view uk-animation-fade'>
                                             <div className='title'>
                                                 <h1>Delphi_</h1>
+                                                <h3>What Happens Next?</h3>
                                             </div>
                                             
                                             <Earth
                                                 width={this.state.earthWidth}
                                                 height={this.state.earthHeight}
+                                                threadId={this.state.threadId}
                                             />
                                             <div className= 'bigNewsFeed'>
 
-                                            <BreakingNews />
+                                            <BreakingNews 
+                                            earthStatus={this.state.earthStatus}
+                                            threadId={this.state.threadId}
+                                            changeThread={this.changeThread}
+                                            />
                                             </div>
                                             
                                         </div>
 
                                         :
 
-                                        <div className='test'>
+                                        <div className='test uk-animation-fade'>
                                             <div className='view'>
                                                 <div className= 'storyInterface'>
                                                     <div className='earthInApp'>
                                                         <Earth
                                                             width={this.state.earthWidth * 0.8}
                                                             height={this.state.earthHeight * 0.8}
+                                                            threadId={this.state.threadId}
                                                         />
                                                         </div>
                                                         <div className='threadInApp'>
@@ -95,7 +113,10 @@ class App extends Component {
                                                 </div>
                                             </div >
                                             <div className ='breakingNews'>
-                                                <BreakingNews />
+                                                <BreakingNews 
+                                                threadId={this.state.threadId}
+                                                changeThread={this.changeThread}
+                                                />
                                             </div>
 
                                         </div>

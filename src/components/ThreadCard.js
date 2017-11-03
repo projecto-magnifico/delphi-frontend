@@ -4,6 +4,12 @@ import 'font-awesome/css/font-awesome.min.css';
 import TimelineElement from './TimelineElement';
 import LatestDevelopmentComponent from './LatestDevelopmentComponent.js'
 
+const headLines = [
+    {title: 'Kushner turned documents over to Special Counsel Robert Muller'},
+    {title: 'Former Trump campaing chairman Paul Manafort indicted along with associate Rick Gates'},
+    {title: 'Trump campaign executive George Papadopulos actively cooperating with Muller since July'}
+]
+
 class ThreadCard extends React.Component {
     constructor(props) {
         super(props)
@@ -48,8 +54,8 @@ class ThreadCard extends React.Component {
                             <li>Special Counsel Robert Muller is also investing Trump for obstruction of justice after the firing of FBI Director James Comey</li>
                             <li><h3>Latest Developments :</h3></li>
                             <ul className='uk-list uk-list-bullet uk-list-divider'>
-                                {[1,2,3].map((element, index) => {
-                                    return <li><LatestDevelopmentComponent key={index}/></li>
+                                {headLines.map((element, index) => {
+                                    return <li><LatestDevelopmentComponent key={index} title={element.title}/></li>
                                 })}
                             </ul>
                         </ul>

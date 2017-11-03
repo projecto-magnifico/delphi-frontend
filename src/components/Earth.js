@@ -10,6 +10,7 @@ class Earth extends React.Component {
         super(props)
     }
 
+
     componentDidMount() {
         const{width, height} = this.props
         const Scene = new three.Scene()
@@ -86,10 +87,23 @@ class Earth extends React.Component {
             context.stroke();
         }
 
-        addDataPoint(483,114);
-        addDataPoint(230,180);
-        addDataPoint(530,353)
-         
+        function drawLines (initialLong, initialLat, long,lat) {
+            context.beginPath();
+            context.moveTo(initialLong,initialLat);
+            context.lineTo(long,lat);
+            context.lineWidth=0.5;
+            context.fillStyle = 'red';
+            context.fill();
+            context.strokeStyle = 'red';
+            context.stroke();
+        }
+        if (this.props.threadId === 1) {
+            addDataPoint(483,114);
+            addDataPoint(230,180);
+            addDataPoint(530,353)
+            drawLines(230,180,483,114) 
+            drawLines(230,180,530,353) 
+        }
         Scene.add(DataGlobe)
 
         function GlobeLoop () {
